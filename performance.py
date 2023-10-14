@@ -6,10 +6,10 @@ class PerformanceSaver:
         self.MSKD = MSKD
 
     def save_performance(self, model_name, results):
-        accuracy = results['eval_accuracy']
-        f1 = results['eval_f1']
-        precision = results['eval_precision']
-        recall = results['eval_recall']
+        accuracy = results['test_accuracy']
+        f1 = results['test_f1']
+        precision = results['test_precision']
+        recall = results['test_recall']
         perf = pd.read_csv(self.csv_file)
         
         if model_name not in perf['model_name'].values:

@@ -5,10 +5,10 @@ import torch
 import pandas as pd
 import numpy as np
 
-class Model:
-    def __init__(self, model_name, train_data = pd.read_csv('data/edu_train.csv'), dev_data = pd.read_csv('data/edu_dev.csv'), test_data = pd.read_csv('data/edu_test.csv')) -> None:
+class Model():
+    def __init__(self, model_name, num_labels=13, train_data = pd.read_csv('data/edu_train.csv'), dev_data = pd.read_csv('data/edu_dev.csv'), test_data = pd.read_csv('data/edu_test.csv')) -> None:
         self.model_name = model_name
-        self.model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=13)
+        self.model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=num_labels, ignore_mismatched_sizes=True)
         if torch.cuda.is_available():
             self.model = self.model.cuda()
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -22,6 +22,10 @@ class Model:
     
     def label_encoder(self, data):
         label_encoder = LabelEncoder()
+        try: 
+            print(label_encoder.classes_)
+        except:
+            print(2)
         return label_encoder.fit_transform(data['updated_label'])
         
     def data_tensor(self, data):
