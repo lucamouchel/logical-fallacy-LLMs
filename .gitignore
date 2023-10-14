@@ -2,3 +2,5 @@ models/
 results/
 wandb/
 pycache/
+data/WatClaimCheck data/
+data/MultiFc data/
