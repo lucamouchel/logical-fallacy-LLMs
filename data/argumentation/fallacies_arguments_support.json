@@ -85,12 +85,12 @@
 
     "appeal to emotion": {
         "example1": {
-            "topic": "Animal Cruelty",
+            "topic": "Should we ban animal experiments",
             "fallacy type": "appeal to emotion",
-            "appeal to emotion fallacy support": "We must stop animal cruelty because just the thought of those innocent animals suffering is heartbreaking."
+            "appeal to emotion fallacy support": "We must stop animal experiments because just the thought of those innocent animals suffering is heartbreaking."
         },
         "example2": {
-            "topic": "Environmental Conservation",
+            "topic": "Should we support environmental conservation",
             "fallacy type": "appeal to emotion",
             "appeal to emotion fallacy support": "We should support environmental conservation because the future of our children depends on a clean and sustainable environment."
         }
@@ -99,80 +99,81 @@
 
     "false dilemma": {
         "example1": {
-            "topic": "Education System",
+            "topic": "Should Mathematics be a Compulsory Course",
             "fallacy type": "false dilemma",
-            "false dilemma fallacy support": "We must choose between either reducing the education budget or having overcrowded classrooms."
+            "false dilemma fallacy support": "Study math or have no critical thinking"
         },
         "example2": {
-            "topic": "Government Policies",
+            "topic": "Should Renewable Energy Replace Fossil Fuels?",
             "fallacy type": "false dilemma",
-            "false dilemma fallacy support": "Either we implement strict government regulations or chaos will reign in society."
+            "false dilemma fallacy support": "We should switch to renewable energy or the world will collapse"
         }
     },
+    
 
     "equivocation": {
         "example1": {
-            "topic": "Honesty in Business",
+            "topic": "Should Voting Rights Expand?",
             "fallacy type": "equivocation",
-            "equivocation fallacy support": "A 'good' reputation implies that a company is morally good. This company has a 'good' reputation because it makes a lot of money."
+            "equivocation fallacy support": "'Expanding' voting rights blurs 'universal access' and 'changing eligibility', confusing discussions."
         },
         "example2": {
-            "topic": "Freedom of Speech",
+            "topic": "Should Gun Control Tighten?",
             "fallacy type": "equivocation",
-            "equivocation fallacy support": "Everyone has the right to freedom of speech. But that doesn't mean you can say whatever you want without consequences."
+            "equivocation fallacy support": "does the term 'tighten' mean 'enhance security' or 'restrict freedom', it is confusing."
         }
     },
     
     "fallacy of extension": {
         "example1": {
-            "topic": "Government Healthcare",
+            "topic": "Should Animal Testing Be Restricted?",
             "fallacy type": "fallacy of extension",
-            "fallacy of extension fallacy support": "Supporters of the healthcare reform want a system where the government controls all medical treatment, just like in a communist state."
+            "fallacy of extension support": "Painting restrictions as total ban misrepresents responsible, humane testing practices in scientific research."
         },
         "example2": {
-            "topic": "Environmental Regulations",
+            "topic": "Should Educational Curriculum Change?",
             "fallacy type": "fallacy of extension",
-            "fallacy of extension fallacy support": "Those in favor of environmental regulations are just environmental extremists who want to ban all human activity that impacts nature."
+            "fallacy of extension support": "Portraying change as erasing core subjects distorts the need for evolving, inclusive educational content."
         }
     },
-
+    
 
     "fallacy of relevance": {
         "example1": {
-            "topic": "Social Media and Education",
+            "topic": "Should Mathematics be a Compulsory Course",
             "fallacy type": "fallacy of relevance",
-            "fallacy of relevance fallacy support": "We should ignore the negative impact of social media on students' grades because social media platforms are excellent for communication and networking."
+            "fallacy of relevance fallacy support": "Mathematics should be mandatory. it builds character, like tasting exotic foods, enriching life experiences."
         },
         "example2": {
-            "topic": "Speed Limits and Car Color",
+            "topic": "Does God exist?",
             "fallacy type": "fallacy of relevance",
-            "fallacy of relevance fallacy support": "Speeding is not an issue; the color of your car doesn't affect how fast you drive."
+            "fallacy of relevance fallacy support": "The existence of God is as crucial as colorful paint in art. Belief fuels innovation, like mixing colors for a masterpiece."
         }
     }, 
 
     "fallacy of credibility": {
         "example1": {
-            "topic": "Climate Change",
+            "topic": "Should we ban the death penalty",
             "fallacy type": "fallacy of credibility",
-            "fallacy of credibility fallacy support": "Renowned actor X says climate change is the most pressing issue. Therefore, climate change must be true."
+            "fallacy of credibility fallacy support": "We should abolish the death penalty. Many respected people, such as actor Guy Handsome, have publicly stated their opposition to it."
         },
         "example2": {
-            "topic": "Healthcare Policies",
+            "topic": "Should we look up to the president",
             "fallacy type": "fallacy of credibility",
-            "fallacy of credibility fallacy support": "A famous scientist endorses a specific healthcare policy. Therefore, the policy must be the most effective solution."
+            "fallacy of credibility fallacy support": "I admire the president for being a good role model.” REPLY: “But the New York Times says he’s a lousy role model, so you’re wrong."
         }
     },
 
     "intentional fallacy": {
         "example1": {
-            "topic": "Online Privacy and Social Media",
+            "topic": "Are aliens real",
             "fallacy type": "intentional fallacy",
-            "intentional fallacy support": "Evaluating social media's impact on user privacy solely based on the developers' intentions may limit understanding the real consequences for data protection."
+            "intentional fallacy support": "You can't prove that aliens don't exist, so they must be real"
         },
         "example2": {
-            "topic": "Data Collection and User Privacy",
+            "topic": "Should Gun Control Tighten?",
             "fallacy type": "intentional fallacy",
-            "intentional fallacy supprort": "Assuming benign intentions in user data collection by social media platforms overlooks potential risks to privacy."
+            "intentional fallacy supprort": "How many school shootings should we tolerate before we change the gun laws?"
         }
     }
 }

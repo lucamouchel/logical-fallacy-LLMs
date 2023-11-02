@@ -2,5 +2,10 @@ models/
 results/
 wandb/
 pycache/
-data/WatClaimCheck data/
+data/watclaimcheck data
 data/MultiFc data/
+data/LOGIC
+data/fallacyRecognition
+data/binary
+data/argumentation/train.tsv
+logicalfallacies
