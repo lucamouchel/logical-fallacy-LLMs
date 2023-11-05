@@ -164,7 +164,7 @@
         }
     },
 
-    "intentional fallacy": {
+    "intentional": {
         "example1": {
             "topic": "Are aliens real",
             "fallacy type": "intentional fallacy",
@@ -173,7 +173,7 @@
         "example2": {
             "topic": "Should Gun Control Tighten?",
             "fallacy type": "intentional fallacy",
-            "intentional fallacy supprort": "How many school shootings should we tolerate before we change the gun laws?"
+            "intentional fallacy support": "How many school shootings should we tolerate before we change the gun laws?"
         }
     }
 }
