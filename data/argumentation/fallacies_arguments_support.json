@@ -21,25 +21,25 @@
         "example1": "The bigger a child's shoe size, the better the child's handwriting", 
 		"example2":"I failed Pre-Cal because my teacher doesn’t like me.",
 		"exampleArg1":{
-            "topic":"Should Mathematics be a Compulsory Course",
+            "topic":"People should not be forced to exercise their right to vote.",
             "fallacy type":"false causality",
-            "false causality fallacy support":"If Mathematics is made compulsory, then it will lead to guaranteed success in unrelated future endeavors."
+            "false causality fallacy support":"If people are made to vote, it goes against their rights. It might result in people voting without knowing much and not really participating in democracy."
         },
         "exampleArg2":{
-            "topic":"Should you invest in renewable technologies",
+            "topic":"School prayer goes against first amendment rights of kids by forcing beliefs.",
             "fallacy type":"false causality",
-            "false causality fallacy support":"If you invest in renewable technologies, then it will guarantee automatic financial gains without concrete evidence or direct causation."
+            "false causality fallacy support":"If school prayer is permitted, then children's First Amendment rights might be infringed, as it enforces religious practices and beliefs."
         }
-    },
+    },   
     "circular reasoning":{
         "definition":"when the end of an argument comes back to the beginning without having proven itself."
         ,
         "example1": "Mr. Casal was very tired because he had no energy.", 
 		"example2":"The news is fake because so much of the news is fake.",
 		"exampleArg1":{
-            "topic":"Should we ban smoking in public places?",
+            "topic":"People should not be forced to exercise their right to vote.",
             "fallacy type":"circular reasoning",
-            "circular reasoning fallacy support":"Smoking in public places should be banned because it should not be allowed to allow smoking in public spaces."
+            "circular reasoning fallacy support":"Forcing people to vote is wrong because it's not right to make them do something they shouldn't be forced to do."
         },
         "exampleArg2":{
             "topic":"Where is the best place to live in",
@@ -53,12 +53,12 @@
         "example1": "Everyone is wearing the new skinny jeans from American Eagle. Are you?", 
 		"example2":"An increasing number of people are keeping ferrets as pets, so they must make wonderful companion animals.",
 		"exampleArg1":{
-            "topic":"Should Mathematics be a Compulsory Course",
+            "topic":"People should not be forced to exercise their right to vote.",
             "fallacy type":"ad populum",
-            "ad populum fallacy support":"Everyone thinks Mathematics should be compulsory, it must be the right decision."
+            "ad populum fallacy support":"Most people believe that forcing citizens to vote goes against their rights. Therefore, it's wrong to compel individuals to vote."
         },
         "exampleArg2":{
-            "topic":"Should you invest in renewable technologies",
+            "topic":"investing in renewable technologies",
             "fallacy type":"ad populum",
             "ad populum fallacy support":"Investing in renewable technologies is the popular choice, so it must be the best financial option."
         }
@@ -69,12 +69,12 @@
         "example1": "She is a teacher in a public school, so any claims that she makes about the public school system are biased and untrue.", 
 		"example2":"Vote for me because the other candidate is a cheat and a liar!",
 		"exampleArg1":{
-            "topic":"Should Mathematics be a Compulsory Course",
+            "topic":"Mathematics should be a Compulsory Course",
             "fallacy type":"ad hominem",
             "ad hominem fallacy support":"Those who oppose Mathematics as compulsory lack intelligence and are against progress."
         },
         "exampleArg2":{
-            "topic":"Should you invest in renewable technologies",
+            "topic":"Invest in renewable technologies",
             "fallacy type":"ad hominem",
             "ad hominem fallacy support":"Critics of investing in renewable technologies are simply ignorant about modern financial strategies."
         }
@@ -84,12 +84,12 @@
         "example1": "Not tipping your waiter is like stealing money right out of someone's wallet.", 
 		"example2":"Most heroin users started out smoking pot. If you start smoking pot, you’ll end up a heroin user, too.",
 		"exampleArg1":{
-            "topic":"Is fast food unhealthy?",
+            "topic":"Mandatory retirement hurts elderly workers",
             "fallacy type":"fallacy of logic",
-            "fallacy of logic fallacy support":"Fast food is unhealthy because it's bad for your health."
+            "fallacy of logic fallacy support":"All elderly people who retire at a certain age become less productive. Therefore, making retirement optional will instantly make them more productive."
         },
         "exampleArg2":{
-            "topic":"Does God exist?",
+            "topic":"The existence of God",
             "fallacy type":"fallacy of logic",
             "fallacy of logic fallacy support":"God must exist because the Bible says so, and the Bible is the word of God."
         }
@@ -100,12 +100,12 @@
         "example1": "You have to give me a passing grade. I spent 150 hours on that project and missed every party this quarter.", 
 		"example2":"Salesguy: You should definitely buy this car.  You look so good in it -- you look at least ten years younger behind that wheel.Tamera: I’ll take it!",
 		"exampleArg1":{
-            "topic":"Should we ban animal experiments",
+            "topic":"Banning animal experiments",
             "fallacy type":"appeal to emotion",
             "appeal to emotion fallacy support":"We must stop animal experiments because just the thought of those innocent animals suffering is heartbreaking."
         },
         "exampleArg2":{
-            "topic":"Should we support environmental conservation",
+            "topic":"Supporting environmental conservation",
             "fallacy type":"appeal to emotion",
             "appeal to emotion fallacy support":"We should support environmental conservation because the future of our children depends on a clean and sustainable environment."
         }
@@ -116,12 +116,12 @@
         "example1": "Either go to the party or spend the night in your room crying.", 
 		"example2":"You could either pursue your dream job or stay where you are and be miserable for the rest of your life.",
 		"exampleArg1":{
-            "topic":"Should Mathematics be a Compulsory Course",
+            "topic":"Social media allows people to connect with people that they otherwise could not connect with",
             "fallacy type":"false dilemma",
-            "false dilemma fallacy support":"Study math or have no critical thinking"
+            "false dilemma fallacy support":"You can either use social media to connect with people you wouldn't otherwise, or you can remain isolated and disconnected from the world."
         },
         "exampleArg2":{
-            "topic":"Should Renewable Energy Replace Fossil Fuels?",
+            "topic":"Replacing fossil fuels with renewable energy",
             "fallacy type":"false dilemma",
             "false dilemma fallacy support":"We should switch to renewable energy or the world will collapse"
         }
@@ -132,9 +132,9 @@
         "example1": "The officer told me to freeze but it was too hot out to be freezing, so I was justified in running away.", 
 		"example2":"Science shows us that improved quality of life comes through research and invention.",
 		"exampleArg1":{
-            "topic":"Should Voting Rights Expand?",
+            "topic":"Television is valuable.",
             "fallacy type":"equivocation",
-            "equivocation fallacy support":"'Expanding' voting rights blurs 'universal access' and 'changing eligibility', confusing discussions."
+            "equivocation fallacy support":"Television is valuable because it holds significant monetary value in the entertainment industry."
         },
         "exampleArg2":{
             "topic":"Should Gun Control Tighten?",
@@ -148,12 +148,12 @@
         "example1": "Person 1: I think pollution is the cause of climate change. Person 2: So you think humans cause hurricanes and tsunamis?", 
 		"example2":"Coronavirus originated in China, therefore all Chinese people are sick.",
 		"exampleArg1":{
-            "topic":"Should Animal Testing Be Restricted?",
+            "topic":"restricting animal testing",
             "fallacy type":"fallacy of extension",
             "fallacy of extension support":"Painting restrictions as total ban misrepresents responsible, humane testing practices in scientific research."
         },
         "exampleArg2":{
-            "topic":"Should Educational Curriculum Change?",
+            "topic":"Chaing the educational curriculum?",
             "fallacy type":"fallacy of extension",
             "fallacy of extension support":"Portraying change as erasing core subjects distorts the need for evolving, inclusive educational content."
         }
@@ -164,12 +164,12 @@
         "exampfle1": "Violent video games are directly related to gun violence in schools and should be banned for teens. The school day should start an hour later.", 
 		"example2":"Why should we be worrying about how the government treats Native people, when people in our city can't get a job?",
 		"exampleArg1":{
-            "topic":"Should Mathematics be a Compulsory Course",
+            "topic":"The importance of mathematics in schools",
             "fallacy type":"fallacy of relevance",
             "fallacy of relevance fallacy support":"Mathematics should be mandatory. it builds character, like tasting exotic foods, enriching life experiences."
         },
         "exampleArg2":{
-            "topic":"Does God exist?",
+            "topic":"The existence of God",
             "fallacy type":"fallacy of relevance",
             "fallacy of relevance fallacy support":"The existence of God is as crucial as colorful paint in art. Belief fuels innovation, like mixing colors for a masterpiece."
         }
@@ -180,14 +180,14 @@
         "example1": "Beyond Meat burgers are healthy for us because they do not have any meat in them.", 
 		"example2":"I saw Ashton Kutcher in a commercial for male skin care. He's looking good for his age, so I'm willing to try the product. He must know what he's talking about.",
 		"exampleArg1":{
-            "topic":"Should we ban the death penalty",
+            "topic":"banning the death penalty",
             "fallacy type":"fallacy of credibility",
             "fallacy of credibility fallacy support":"We should abolish the death penalty. Many respected people, such as actor Guy Handsome, have publicly stated their opposition to it."
         },
         "exampleArg2":{
-            "topic":"Should we look up to the president",
+            "topic":"looking up to the president",
             "fallacy type":"fallacy of credibility",
-            "fallacy of credibility fallacy support":"I admire the president for being a good role model.\u201d REPLY: \u201cBut the New York Times says he\u2019s a lousy role model, so you\u2019re wrong."
+            "fallacy of credibility fallacy support":"I admire the president for being a good role model. REPLY: But the New York Times says he's a lousy role model, so you're wrong."
         }
     },
     "intentional":{
