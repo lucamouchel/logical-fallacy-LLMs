@@ -193,5 +193,17 @@
     "intentional":{
         "definition":"some intentional (sometimes subconscious) action\/choice to incorrectly support an argument"
         ,
-    
-        
+    "example1": "Yes, I do think that all drunk drivers should go to prison, but your honor, he is my son! He is a good boy who just made a mistake!", 
+		"example2":"Bill: I think that some people have psychic powers.  Jill: What is your proof? Bill: No one has been able to prove that people do not have psychic powers.",
+		"exampleArg1":{
+            "topic":"Are aliens real",
+            "fallacy type":"intentional fallacy",
+            "intentional fallacy support":"You can't prove that aliens don't exist, so they must be real"
+        },
+        "exampleArg2":{
+            "topic":"Should Gun Control Tighten?",
+            "fallacy type":"intentional fallacy",
+            "intentional fallacy support":"How many school shootings should we tolerate before we change the gun laws?"
+        }
+    }
+}

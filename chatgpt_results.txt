@@ -1,0 +1,77 @@
+{
+    "topic": "The right to bear arms helps people defend themselves.",
+    "fallacy type": "faulty generalization",
+    "faulty generalization fallacy support": "Owning guns increases safety as seen in a few reported cases of successful self-defense."
+}
+
+{
+    "topic": "How people learn is independent of their look.",
+    "fallacy type": "false causality",
+    "false causality fallacy support": "People's appearance directly affects their learning abilities."
+}
+
+{
+  "topic": "School prayer should be in schools.",
+  "fallacy type": "circular reasoning",
+  "circular reasoning fallacy support": "School prayer must be in schools because schools require the presence of school prayer."
+}
+
+{
+  "topic": "Assisted suicide shouldn't be illegal because it gives the patient control over end-of-life decisions.",
+  "fallacy type": "ad populum",
+  "ad populum fallacy support": "A growing number of people believe in assisted suicide, so it must grant patients control over their end-of-life decisions."
+}
+
+{
+  "topic": "The benefits of organic farming in modern agriculture.",
+  "fallacy type": "ad hominem",
+  "ad hominem fallacy support": "Advocates for organic farming lack scientific knowledge and are against progress in agriculture."
+}
+
+{
+  "topic": "Prostitution should be legalized.",
+  "fallacy type": "fallacy of logic",
+  "fallacy of logic fallacy support": "Prostitution should be legalized because it's been around for a long time."
+}
+
+{
+  "topic": "Surrogacy is an act rendering help to those who cannot give birth.",
+  "fallacy type": "appeal to emotion",
+  "appeal to emotion fallacy support": "Supporting surrogacy is vital because it brings immeasurable joy to families longing for children."
+}
+
+{
+	"topic": "Prayer in schools is good because it helps them relax during the day",
+	"fallacy type": "false dilemma",
+	"false dilemma fallacy support": "Either allow prayer in schools for relaxation or have stressed and anxious students."
+}
+
+{
+    "topic": "executives are not overpaid for the work they do",
+    "fallacy type": "equivocation",
+    "equivocation fallacy support": "Executives' compensation aligns with market rates; therefore, their salaries aren't excessive, ignoring internal equity concerns."
+}
+
+{
+  "topic": "Wikipedia is a source of information for everyone.",
+  "fallacy type": "fallacy of extension",
+  "fallacy of extension fallacy support": "Assuming Wikipedia as a sole information source exaggerates its reliability and scope of content for everyone."
+}
+
+{
+  "topic": "The right is protected by the Second Amendment.",
+  "fallacy type": "fallacy of relevance",
+  "fallacy of relevance fallacy support": "The Second Amendment guarantees the right to bear arms, contributing to national security and historical values."
+}
+
+{
+    "topic": "It is desecrating to the American flag to burn it.",
+    "fallacy type": "fallacy of credibility",
+    "fallacy of credibility fallacy support": "Burning the flag is disrespectful. Renowned veterans like General Smith find it deeply offensive."
+}
+
+{
+    "topic": "Adopting gender-neutral language is too costly of a venture.",
+    "fallacy type": "intentional",
+    "intentional fallacy support": "Implementing gender-neutral language is impractical and expensive without considering its long-term social benefits."
+}
