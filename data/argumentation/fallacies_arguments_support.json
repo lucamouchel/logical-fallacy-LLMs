@@ -4,14 +4,25 @@
         "example1": "Flight attendants are the nicest people. I should know—I’ve taken two flights.", 
 		"example2":"The two courses I took at UWI were not very interesting. I don't think its a good university.",
 		"exampleArg1":{
+            "topic":"Misconceptions and Stereotypes Surrounding Poverty",
+            "fallacy type":"faulty generalization",
+            "faulty generalization fallacy support":"I know four poor families. They are lazy drug addicts. Therefore, all poor people are lazy drug addicts."
+        },
+        "exampleArg2":{
+            "topic":"Investing in renewable technologies",
+            "fallacy type":"faulty generalization",
+            "faulty generalization fallacy support":"Investing in renewable technologies is wise because all such investments lead to success."
+        },
+
+        "exampleArg3":{
             "topic":"Should Mathematics be a Compulsory Course",
             "fallacy type":"faulty generalization",
             "faulty generalization fallacy support":"Mathematics should be compulsory because everyone benefits from it."
         },
-        "exampleArg2":{
-            "topic":"Should you invest in renewable technologies",
+        "exampleArg4":{
+            "topic":"Relationships",
             "fallacy type":"faulty generalization",
-            "faulty generalization fallacy support":"Investing in renewable technologies is wise because all such investments lead to success."
+            "faulty generalization fallacy support":"Christine has a terrible experience with a boyfriend. She decides that all boys are mean."
         }
     },
 
@@ -29,8 +40,20 @@
             "topic":"School prayer goes against first amendment rights of kids by forcing beliefs.",
             "fallacy type":"false causality",
             "false causality fallacy support":"If school prayer is permitted, then children's First Amendment rights might be infringed, as it enforces religious practices and beliefs."
+        },
+        
+		"exampleArg3":{
+            "topic":"The importance of mathematics in schools",
+            "fallacy type":"false causality",
+            "false causality fallacy support":"If Mathematics is made compulsory, then it will lead to guaranteed success in unrelated future endeavors."
+        },
+        "exampleArg4":{
+            "topic":"investing in renewable technologies",
+            "fallacy type":"false causality",
+            "false causality fallacy support":"If you invest in renewable technologies, then it will guarantee automatic financial gains without concrete evidence or direct causation."
         }
     },   
+
     "circular reasoning":{
         "definition":"when the end of an argument comes back to the beginning without having proven itself."
         ,
@@ -42,14 +65,23 @@
             "circular reasoning fallacy support":"Forcing people to vote is wrong because it's not right to make them do something they shouldn't be forced to do."
         },
         "exampleArg2":{
+            "topic":"The origin of the universe",
+            "fallacy type":"circular reasoning",
+            "circular fallacy support":"The universe has a beginning. Every thing that has a beginning has a cause. Therefore, the universe has a cause called God."
+        },
+        "exampleArg3":{
+            "topic":"Should we ban smoking in public places?",
+            "fallacy type":"circular reasoning",
+            "circular reasoning fallacy support":"Smoking in public places should be banned because it should not be allowed to allow smoking in public spaces."
+        },
+        "exampleArg4":{
             "topic":"Where is the best place to live in",
             "fallacy type":"circular reasoning",
             "circular fallacy support":"America is the best place to live, because it's better than any other country."
         }
     },
     "ad populum":{
-        "definition":"a fallacious argument which is based on affirming that something is real or better because the majority thinks so"
-        ,
+        "definition":"a fallacious argument which is based on affirming that something is real or better because the majority thinks so",
         "example1": "Everyone is wearing the new skinny jeans from American Eagle. Are you?", 
 		"example2":"An increasing number of people are keeping ferrets as pets, so they must make wonderful companion animals.",
 		"exampleArg1":{
@@ -61,6 +93,16 @@
             "topic":"investing in renewable technologies",
             "fallacy type":"ad populum",
             "ad populum fallacy support":"Investing in renewable technologies is the popular choice, so it must be the best financial option."
+        },
+        "exampleArg3":{
+            "topic":"Should Mathematics be a Compulsory Course",
+            "fallacy type":"ad populum",
+            "ad populum fallacy support":"Everyone thinks Mathematics should be compulsory, it must be the right decision."
+        },
+        "exampleArg4":{
+            "topic":"Peer pressure",
+            "fallacy type":"ad populum",
+            "ad populum fallacy support":"Everyone who is really into gaming already owns the latest video game. Don't be the only one left out!"
         }
     },
     "ad hominem":{
@@ -74,10 +116,23 @@
             "ad hominem fallacy support":"Those who oppose Mathematics as compulsory lack intelligence and are against progress."
         },
         "exampleArg2":{
-            "topic":"Invest in renewable technologies",
+            "topic":"Investing in renewable technologies",
             "fallacy type":"ad hominem",
             "ad hominem fallacy support":"Critics of investing in renewable technologies are simply ignorant about modern financial strategies."
+        },
+        "exampleArg3":{
+            "topic":"Should Mathematics be a Compulsory Course",
+            "fallacy type":"ad hominem",
+            "ad hominem fallacy support":"Those who oppose Mathematics as compulsory lack intelligence and are against progress."
+        },
+
+        "exampleArg4":{
+            "topic":"",
+            "fallacy type":"ad hominem",
+            "ad hominem fallacy support":""
         }
+
+
     },
     "fallacy of logic":{
         "definition":"an error in the logical structure of an argument.",
@@ -92,8 +147,19 @@
             "topic":"The existence of God",
             "fallacy type":"fallacy of logic",
             "fallacy of logic fallacy support":"God must exist because the Bible says so, and the Bible is the word of God."
+        },
+        "exampleArg3":{
+            "topic":"Is fast food unhealthy?",
+            "fallacy type":"fallacy of logic",
+            "fallacy of logic fallacy support":"Fast food is unhealthy because it's bad for your health."
+        },
+        "exampleArg4":{
+            "topic":"Does God exist?",
+            "fallacy type":"fallacy of logic",
+            "fallacy of logic fallacy support":"God must exist because the Bible says so, and the Bible is the word of God."
         }
     },
+
     "appeal to emotion":{
         "definition":"manipulation of the recipient's emotions in order to win an argument"
         ,
@@ -124,7 +190,13 @@
             "topic":"Replacing fossil fuels with renewable energy",
             "fallacy type":"false dilemma",
             "false dilemma fallacy support":"We should switch to renewable energy or the world will collapse"
+        },
+        "exampleArg3":{
+            "topic":"The importance of mathematics in schools",
+            "fallacy type":"false dilemma",
+            "false dilemma fallacy support":"Study math or have no critical thinking"
         }
+
     },
     "equivocation":{
         "definition":"when a key term or phrase in an argument is used in an ambiguous way, with one meaning in one portion of the argument and then another meaning in another portion of the argument."
@@ -140,8 +212,14 @@
             "topic":"Should Gun Control Tighten?",
             "fallacy type":"equivocation",
             "equivocation fallacy support":"does the term 'tighten' mean 'enhance security' or 'restrict freedom', it is confusing."
+        },
+        "exampleArg3":{
+            "topic":"Should Voting Rights Expand?",
+            "fallacy type":"equivocation",
+            "equivocation fallacy support":"'Expanding' voting rights blurs 'universal access' and 'changing eligibility', confusing discussions."
         }
     },
+
     "fallacy of extension":{
         "definition":"attacking an exaggerated or caricatured version of your opponent's position."
         ,
@@ -153,14 +231,13 @@
             "fallacy of extension support":"Painting restrictions as total ban misrepresents responsible, humane testing practices in scientific research."
         },
         "exampleArg2":{
-            "topic":"Chaing the educational curriculum?",
+            "topic":"Changing the educational curriculum",
             "fallacy type":"fallacy of extension",
             "fallacy of extension support":"Portraying change as erasing core subjects distorts the need for evolving, inclusive educational content."
         }
     },
     "fallacy of relevance":{
-        "definition":"introducing premises or conclusions that have nothing to do with the subject matter."
-        ,
+        "definition":"introducing premises or conclusions that have nothing to do with the subject matter.",
         "exampfle1": "Violent video games are directly related to gun violence in schools and should be banned for teens. The school day should start an hour later.", 
 		"example2":"Why should we be worrying about how the government treats Native people, when people in our city can't get a job?",
 		"exampleArg1":{
