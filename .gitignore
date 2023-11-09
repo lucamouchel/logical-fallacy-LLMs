@@ -9,3 +9,4 @@ data/fallacyRecognition
 data/binary
 data/argumentation/train.tsv
 logicalfallacies
+GPTprompt.ipynb
