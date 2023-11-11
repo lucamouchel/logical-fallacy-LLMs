@@ -1,0 +1,67 @@
+[
+    {
+        "fallacy type": "faulty generalization",
+        "faulty generalization fallacy support": "My roommate spends all day on the internet and fails his classes. Therefore, the internet makes all students fail.",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy type": "false causality",
+        "false causality fallacy support": "If a student uses the internet, they will inevitably perform poorly in their studies.",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "circular reasoning fallacy support": "The internet is harmful to students because it negatively affects them.",
+        "fallacy type": "circular reasoning",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "ad populum fallacy support": "Most people agree that the internet negatively impacts college students, so it must be true.",
+        "fallacy type": "ad populum",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "ad hominem fallacy support": "Anyone who believes the internet is harmful to students is just technologically illiterate.",
+        "fallacy type": "ad hominem",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy of logic fallacy support": "All college students who use the internet procrastinate. Therefore, the internet is solely responsible for their poor academic performance.",
+        "fallacy type": "fallacy of logic",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "appeal to emotion fallacy support": "We must limit internet use because it's devastating to see our students' potential wasted on mindless scrolling.",
+        "fallacy type": "appeal to emotion",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy type": "false dilemma",
+        "false dilemma fallacy support": "Either college students use the internet and suffer negative effects, or they avoid it and miss out on crucial information.",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "equivocation fallacy support": "The Internet has negative effects because it's full of 'bugs', which can be harmful to students.",
+        "fallacy type": "equivocation",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy of extension fallacy support": "So you're saying that without the internet, students would be perfectly well-adjusted and successful?",
+        "fallacy type": "fallacy of extension",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy of relevance fallacy support": "The internet is bad for students. After all, it's also used for illegal activities like hacking.",
+        "fallacy type": "fallacy of relevance",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy of credibility fallacy support": "The internet is harmful to students. Renowned author, John Grisham, once said he believes it's a distraction.",
+        "fallacy type": "fallacy of credibility",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy type": "intentional",
+        "intentional fallacy support": "Since my grades dropped after I started using the internet, it must be harmful to all college students.",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    }
+]

@@ -1,0 +1,17 @@
+[
+    {
+        "fallacy type": "faulty generalization",
+        "faulty generalization fallacy support": "AI has replaced some jobs, so it will replace all jobs.",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "fallacy type": "false causality",
+        "false causality fallacy support": "If humans rely too much on AI, it will lead to a lack of human creativity and innovation, resulting in AI taking over.",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "ad populum fallacy support": "Most people believe that AI will eventually replace humans, so it must be true.",
+        "fallacy type": "ad populum",
+        "topic": "Will artificial intelligence replace humans"
+    }
+]

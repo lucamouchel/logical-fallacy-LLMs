@@ -10,3 +10,7 @@ data/binary
 data/argumentation/train.tsv
 logicalfallacies
 GPTprompt.ipynb
+output_fallacies.py
+runs/
+outputs/
+cache_dir/

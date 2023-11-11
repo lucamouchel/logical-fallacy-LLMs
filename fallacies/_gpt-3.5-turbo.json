@@ -1,0 +1,262 @@
+[
+    {
+        "fallacy type": "faulty generalization",
+        "faulty generalization fallacy support": "I've seen one AI robot perform a task better than a human. Therefore, all AI will replace humans.",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "fallacy type": "false causality",
+        "false causality fallacy support": "If artificial intelligence continues to advance, it could lead to humans becoming obsolete in the workforce.",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "circular reasoning fallacy support": "Artificial intelligence will replace humans because it's inevitable that they will be replaced by artificial intelligence.",
+        "fallacy type": "circular reasoning",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "ad populum fallacy support": "The majority of people believe that artificial intelligence will never be able to replace humans. Therefore, it is unlikely that AI will ever fully replace humans.",
+        "fallacy type": "ad populum",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "ad hominem fallacy support": "Those who believe AI will replace humans are just afraid of losing their jobs and are resistant to change.",
+        "fallacy type": "ad hominem",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "fallacy of logic fallacy support": "If artificial intelligence can perform tasks better than humans, then it will replace humans in all aspects of life.",
+        "fallacy type": "fallacy of logic",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "appeal to emotion fallacy support": "We must prevent artificial intelligence from replacing humans because the idea of losing our jobs and livelihoods is terrifying.",
+        "fallacy type": "appeal to emotion",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "fallacy type": "false dilemma",
+        "false dilemma fallacy support": "Either artificial intelligence will replace humans completely, or humans will have no role in the future.",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "equivocation fallacy support": "Artificial intelligence will replace humans because it can perform tasks that were previously done by humans.",
+        "fallacy type": "equivocation",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "fallacy of extension fallacy support": "Claiming that artificial intelligence will completely replace humans misrepresents the potential for collaboration and augmentation between humans and AI.",
+        "fallacy type": "fallacy of extension",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "fallacy of relevance fallacy support": "Why worry about AI when we have more pressing issues like poverty and climate change?",
+        "fallacy type": "fallacy of relevance",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "fallacy of credibility fallacy support": "We should not worry about artificial intelligence replacing humans. Elon Musk, a renowned entrepreneur, has said that it is not a concern.",
+        "fallacy type": "fallacy of credibility",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "fallacy type": "intentional fallacy",
+        "intentional fallacy support": "We can't predict the future, so it's possible that AI will replace humans.",
+        "topic": "Will artificial intelligence replace humans"
+    },
+    {
+        "fallacy type": "faulty generalization",
+        "faulty generalization fallacy support": "I know a woman who is not physically strong. Therefore, all women are not physically strong enough for war.",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "fallacy type": "false causality",
+        "false causality fallacy support": "If women are allowed to fight in wars, it will lead to a decline in the birth rate and population growth.",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "circular reasoning fallacy support": "Women should not be in war because it is not appropriate for them to be involved in such activities.",
+        "fallacy type": "circular reasoning",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "ad populum fallacy support": "The majority of people believe that women should not be involved in war, so it must be true.",
+        "fallacy type": "ad populum",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "ad hominem fallacy support": "Those who support women in war are weak and lack physical strength.",
+        "fallacy type": "ad hominem",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "fallacy of logic fallacy support": "If women are allowed to fight in wars, then all women will want to fight in wars and there will be no women left to have children.",
+        "fallacy type": "fallacy of logic",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "appeal to emotion fallacy support": "We cannot bear the thought of women being injured or killed in the horrors of war.",
+        "fallacy type": "appeal to emotion",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "fallacy type": "false dilemma",
+        "false dilemma fallacy support": "Either women should stay at home and be submissive, or they should join the military and abandon their femininity.",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "equivocation fallacy support": "Women should not partake in war because they are valuable in maintaining peace and harmony in society.",
+        "fallacy type": "equivocation",
+        "topic": "Women should not partake in war."
+    },
+    {
+        "fallacy of extension fallacy support": "Claiming that women participating in war means they will be on the front lines and in combat roles.",
+        "fallacy type": "fallacy of extension",
+        "topic": "women should not partake in war"
+    },
+    {
+        "fallacy of relevance fallacy support": "Women should not partake in war because they are better suited for nurturing and caring for their families.",
+        "fallacy type": "fallacy of relevance",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "fallacy of credibility fallacy support": "We should not allow women to participate in war. General John Doe, a highly respected military leader, has stated that women are not fit for combat.",
+        "fallacy type": "fallacy of credibility",
+        "topic": "women should not partake in war"
+    },
+    {
+        "fallacy type": "intentional fallacy",
+        "intentional fallacy support": "Women are too emotional to handle the stress and violence of war.",
+        "topic": "Women should not partake in war"
+    },
+    {
+        "fallacy type": "faulty generalization",
+        "faulty generalization fallacy support": "I know three college students who spend all their time on social media. Therefore, all college students are addicted to social media.",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy type": "false causality",
+        "false causality fallacy support": "If college students spend more time on the internet, they will have lower grades and less social interaction.",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "circular reasoning fallacy support": "The internet has negative effects on college students because it has a lot of negative impacts on their lives.",
+        "fallacy type": "circular reasoning",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "ad populum fallacy support": "The majority of college students believe that the internet has negative effects on their academic performance. Therefore, it must be true.",
+        "fallacy type": "ad populum",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "ad hominem fallacy support": "Those who use the internet excessively lack self-control and are lazy.",
+        "fallacy type": "ad hominem",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy of logic fallacy support": "Some college students who use the internet excessively have negative effects. Therefore, all college students who use the internet will have negative effects.",
+        "fallacy type": "fallacy of logic",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "appeal to emotion fallacy support": "We must limit internet access for college students because it is destroying their social lives and causing them to become isolated and depressed.",
+        "fallacy type": "appeal to emotion",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy type": "false dilemma",
+        "false dilemma fallacy support": "College students can either be negatively affected by the internet or not be affected at all.",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "equivocation fallacy support": "The Internet has negative effects on college students because it can be a source of distraction and procrastination.",
+        "fallacy type": "equivocation",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy of extension fallacy support": "Claiming that the internet only has negative effects on college students ignores the many positive aspects it brings to their education and social lives.",
+        "fallacy type": "fallacy of extension",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy of relevance fallacy support": "The Internet is a great tool for communication and research, so it must have positive effects on college students.",
+        "fallacy type": "fallacy of relevance",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy of credibility fallacy support": "We should not trust the negative effects of the internet on college students because it was stated by a self-proclaimed internet addict.",
+        "fallacy type": "fallacy of credibility",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy type": "intentional fallacy",
+        "intentional fallacy support": "You can't prove that the internet doesn't have negative effects on college students, so it must have more negative effects.",
+        "topic": "Does the Internet Have More Negative Effects on College Students?"
+    },
+    {
+        "fallacy type": "faulty generalization",
+        "faulty generalization fallacy support": "I read about one case where an innocent person was executed. Therefore, the death penalty should be abolished.",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "fallacy type": "false causality",
+        "false causality fallacy support": "If the death penalty is abolished, it will lead to an increase in crime rates as potential criminals will not fear the consequences of their actions.",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "circular reasoning fallacy support": "The death penalty should be abolished because it's not fair to have a punishment that is unfair.",
+        "fallacy type": "circular reasoning",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "ad populum fallacy support": "The majority of people believe that the death penalty is inhumane and should be abolished. Therefore, it should be abolished.",
+        "fallacy type": "ad populum",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "ad hominem fallacy support": "Those who support the death penalty are bloodthirsty and lack empathy for human life.",
+        "fallacy type": "ad hominem",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "fallacy of logic fallacy support": "If we abolish the death penalty, murderers will not fear the consequences and crime rates will skyrocket.",
+        "fallacy type": "fallacy of logic",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "appeal to emotion fallacy support": "We must abolish the death penalty because the thought of taking someone's life is too cruel and inhumane.",
+        "fallacy type": "appeal to emotion",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "fallacy type": "false dilemma",
+        "false dilemma fallacy support": "Either we keep the death penalty or we let murderers roam free and endanger innocent lives.",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "equivocation fallacy support": "The death penalty should be abolished because it is a penalty that results in death.",
+        "fallacy type": "equivocation",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "fallacy of extension fallacy support": "Claiming that abolishing the death penalty means letting all murderers go free is an exaggeration and misrepresentation of the argument.",
+        "fallacy type": "fallacy of extension",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "fallacy of relevance fallacy support": "The death penalty should be abolished because it costs too much money to maintain prisons.",
+        "fallacy type": "fallacy of relevance",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "fallacy of credibility fallacy support": "We should abolish the death penalty. Many respected people, such as actor Guy Handsome, have publicly stated their opposition to it.",
+        "fallacy type": "fallacy of credibility",
+        "topic": "Should the death penalty be abolished"
+    },
+    {
+        "fallacy type": "intentional fallacy",
+        "intentional fallacy support": "If we abolish the death penalty, murderers will roam free and innocent people will suffer.",
+        "topic": "Should the death penalty be abolished"
+    }
+]
