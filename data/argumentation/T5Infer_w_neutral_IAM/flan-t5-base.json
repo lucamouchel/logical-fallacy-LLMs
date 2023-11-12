@@ -1,0 +1,58 @@
+{
+    "Should Mathematics be a Compulsory Course": [
+        {
+            "argument_type": "supporting",
+            "argument": "The study of mathematics in the United States has shown that it is a very important subject for students to learn. [ref]."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "The study of mathematics in the United States has shown that it is a very important subject for the study of the world."
+        },
+        {
+            "argument_type": "neutral",
+            "argument": "The study of mathematics in the United States has been criticized by the United States Department of Education, which has criticized the curriculum for a number of reasons."
+        }
+    ],
+    "Should we support the universal language": [
+        {
+            "argument_type": "supporting",
+            "argument": "The language is a universal language, and it is a universal language. [ref]. [ref]."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "The language itself is a language that is a language that is a language that is a language that is a language that is a language that is a language that is a language that is a language that is"
+        },
+        {
+            "argument_type": "neutral",
+            "argument": "The language is a universal language, and it is a universal language. [ref]. [ref]."
+        }
+    ],
+    "Retirement should not be mandatory.": [
+        {
+            "argument_type": "supporting",
+            "argument": "The benefits of retirement are not a monetary benefit, but a benefit that can be used to pay for the future."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "The government has a duty to ensure that the benefits of retirement are not squandered on the employees."
+        },
+        {
+            "argument_type": "neutral",
+            "argument": "The government has a duty to ensure that the pensions of the employees are properly paid and that the pensions are properly repaid."
+        }
+    ],
+    "Those denying the holocaust should be punished.": [
+        {
+            "argument_type": "supporting",
+            "argument": "The holocaust was a relic of the Holocaust, and the Holocaust was a relic of the Holocaust."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "The holocaust was a relic of the Holocaust, and the Holocaust itself was a relic of the Holocaust."
+        },
+        {
+            "argument_type": "neutral",
+            "argument": "The holocaust was a time of great suffering for the Jewish people, and the Holocaust was a time of great suffering for the Jewish people."
+        }
+    ]
+}

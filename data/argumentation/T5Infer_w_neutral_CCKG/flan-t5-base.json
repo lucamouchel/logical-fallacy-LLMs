@@ -1,0 +1,58 @@
+{
+    "Shouldn't it be forbidden to set a minimum wage": [
+        {
+            "argument_type": "supporting",
+            "argument": "The minimum wage is a measure of the amount of money that can be earned. It is not a monetary measure."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "The minimum wage is a measure of the amount of money that is paid to a person. It is not a measure of income."
+        },
+        {
+            "argument_type": "neutral",
+            "argument": "The minimum wage is a measure of the amount of money that is paid to a person for the work they do."
+        }
+    ],
+    "Should we provide breakfast for school students?": [
+        {
+            "argument_type": "supporting",
+            "argument": "Breakfast is a good way to start the day. It is important to provide breakfast for students.. It is important to provide breakfast for students."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "Breakfast is a good way to start the day. It is not a bad thing to do. The answer: no."
+        },
+        {
+            "argument_type": "neutral",
+            "argument": "The breakfast is a good way to start the day. It is a good way to start the day. It is a good way to start the day."
+        }
+    ],
+    "Adopting gender-neutral language is too costly of a venture.": [
+        {
+            "argument_type": "supporting",
+            "argument": "Adopting gender-neutral language is a cost-effective way to make money....."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "Adopting gender-neutral language is a good way to make money.. It is not a bad idea."
+        },
+        {
+            "argument_type": "neutral",
+            "argument": "The cost of adopting gender-neutral language is too high........"
+        }
+    ],
+    "Companies don't let the public know about advancements, so they can keep the money for themselves.": [
+        {
+            "argument_type": "supporting",
+            "argument": "Companies don't let the public know about advancements. They want to keep the money for themselves.. They want to keep the money for themselves."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "Companies are not able to keep money for themselves. They are able to make money by letting the public know about advancements."
+        },
+        {
+            "argument_type": "neutral",
+            "argument": "Companies are not able to keep their money for themselves. They are able to make money by putting their money into their pockets."
+        }
+    ]
+}
