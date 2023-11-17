@@ -92,15 +92,15 @@
             "fallacy type":"ad populum",
             "ad populum fallacy support":"Investing in renewable technologies is the popular choice, so it must be the best financial option."
         },
-        "exampleArg3":{
+        "exampleArg1counter":{
             "topic":"Should Mathematics be a Compulsory Course",
             "fallacy type":"ad populum",
-            "ad populum fallacy support":"Everyone thinks Mathematics should be compulsory, it must be the right decision."
+            "ad populum fallacy counter":"Everyone thinks Mathematics should be compulsory, it must be the right decision."
         },
-        "exampleArg4":{
+        "exampleArg2counter":{
             "topic":"Peer pressure",
             "fallacy type":"ad populum",
-            "ad populum fallacy support":"Everyone who is really into gaming already owns the latest video game. Don't be the only one left out!"
+            "ad populum fallacy counter":""
         }
     },
     "ad hominem":{
@@ -118,16 +118,16 @@
             "fallacy type":"ad hominem",
             "ad hominem fallacy support":"Critics of investing in renewable technologies are simply ignorant about modern financial strategies."
         },
-        "exampleArg3":{
+        "exampleArg1counter":{
             "topic":"Should Mathematics be a Compulsory Course",
             "fallacy type":"ad hominem",
-            "ad hominem fallacy support":"Those who oppose Mathematics as compulsory lack intelligence and are against progress."
+            "ad hominem fallacy counter":"Those who oppose Mathematics as compulsory lack intelligence and are against progress."
         },
 
-        "exampleArg4":{
+        "exampleArg2counter":{
             "topic":"",
             "fallacy type":"ad hominem",
-            "ad hominem fallacy support":""
+            "ad hominem fallacy counter":""
         }
 
 
@@ -146,15 +146,15 @@
             "fallacy type":"fallacy of logic",
             "fallacy of logic fallacy support":"God must exist because the Bible says so, and the Bible is the word of God."
         },
-        "exampleArg3":{
+        "exampleArg1counter":{
             "topic":"Is fast food unhealthy?",
             "fallacy type":"fallacy of logic",
-            "fallacy of logic fallacy support":"Fast food is unhealthy because it's bad for your health."
+            "fallacy of logic fallacy counter":"Fast food is unhealthy because it's bad for your health."
         },
-        "exampleArg4":{
+        "exampleArg2counter":{
             "topic":"Does God exist?",
             "fallacy type":"fallacy of logic",
-            "fallacy of logic fallacy support":"God must exist because the Bible says so, and the Bible is the word of God."
+            "fallacy of logic fallacy counter":"God must exist because the Bible says so, and the Bible is the word of God."
         }
     },
 
@@ -172,6 +172,17 @@
             "topic":"Supporting environmental conservation",
             "fallacy type":"appeal to emotion",
             "appeal to emotion fallacy support":"We should support environmental conservation because the future of our children depends on a clean and sustainable environment."
+        },
+
+        "exampleArg1counter":{
+            "topic":"Should cellphones be used during class?",
+            "fallacy type":"appeal to emotion",
+            "appeal to emotion fallacy counter": "No, imagine you were a teacher and everybody would just concentrate on their smartphones? How would that feel?"
+        },
+        "exampleArg2counter":{
+            "topic":"Is nuclear power a reasonable energy source?",
+            "fallacy type":"appeal to emotion",
+            "appeal to emotion fallacy counter":"Nuclear power was the reason of death of millions of people. It should vanish from this planet"
         }
     },
     "false dilemma":{
@@ -189,10 +200,15 @@
             "fallacy type":"false dilemma",
             "false dilemma fallacy support":"We should switch to renewable energy or the world will collapse"
         },
-        "exampleArg3":{
+        "exampleArg1counter":{
             "topic":"The importance of mathematics in schools",
             "fallacy type":"false dilemma",
-            "false dilemma fallacy support":"Study math or have no critical thinking"
+            "false dilemma fallacy counter":"Study math or have no critical thinking"
+        },
+        "exampleArg2counter":{
+            "topic":"The importance of mathematics in schools",
+            "fallacy type":"false dilemma",
+            "false dilemma fallacy counter":""
         }
 
     },
@@ -211,10 +227,15 @@
             "fallacy type":"equivocation",
             "equivocation fallacy support":"does the term 'tighten' mean 'enhance security' or 'restrict freedom', it is confusing."
         },
-        "exampleArg3":{
+        "exampleArg1counter":{
             "topic":"Should Voting Rights Expand?",
             "fallacy type":"equivocation",
-            "equivocation fallacy support":"'Expanding' voting rights blurs 'universal access' and 'changing eligibility', confusing discussions."
+            "equivocation fallacy counter":"'Expanding' voting rights blurs 'universal access' and 'changing eligibility', confusing discussions."
+        },
+        "exampleArg2counter":{
+            "topic":"Should Voting Rights Expand?",
+            "fallacy type":"equivocation",
+            "equivocation fallacy counter":""
         }
     },
 
@@ -263,6 +284,16 @@
             "topic":"looking up to the president",
             "fallacy type":"fallacy of credibility",
             "fallacy of credibility fallacy support":"I admire the president for being a good role model. REPLY: But the New York Times says he's a lousy role model, so you're wrong."
+        },
+        "exampleArg1counter":{
+            "topic":"banning the death penalty",
+            "fallacy type":"fallacy of credibility",
+            "fallacy of credibility fallacy support":"We should not abolish the death penalty. Many respected people, have publicly stated their support to it."
+        },
+        "exampleArg2counter":{
+            "topic":"looking up to the president",
+            "fallacy type":"fallacy of credibility",
+            "fallacy of credibility fallacy counter":"I admire the president for being a good role model. REPLY: But the New York Times says he's a lousy role model, so you're wrong."
         }
     },
     "intentional":{
@@ -279,6 +310,16 @@
             "topic":"Should Gun Control Tighten?",
             "fallacy type":"intentional fallacy",
             "intentional fallacy support":"How many school shootings should we tolerate before we change the gun laws?"
+        },
+        "exampleArg1counter":{
+            "topic":"Are aliens real",
+            "fallacy type":"intentional fallacy",
+            "intentional fallacy support":"You can't prove that aliens don't exist, so they must not be real"
+        },
+        "exampleArg2counter":{
+            "topic":"Should Gun Control Tighten?",
+            "fallacy type":"intentional fallacy",
+            "intentional fallacy support":""
         }
     }
 }

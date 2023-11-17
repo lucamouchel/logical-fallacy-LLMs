@@ -2,8 +2,6 @@ models/
 results/
 wandb/
 pycache/
-data/watclaimcheck data
-data/MultiFc data/
 data/LOGIC
 data/fallacyRecognition
 data/binary
@@ -14,3 +12,6 @@ output_fallacies.py
 runs/
 outputs/
 cache_dir/
+.env
+.ipynb_checkpoints/
+data/
