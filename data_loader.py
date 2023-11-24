@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 def load_data(data_source: str):
-    data_dir = 'data/argumentation'
+    data_dir = f'data/argumentation/{data_source}'
     train_data = pd.read_csv(os.path.join(data_dir, f"train_{data_source}.tsv"), sep='\t')[['topic', 'argument', 'label']]
     dev_data = pd.read_csv(os.path.join(data_dir, f"dev_{data_source}.tsv"), sep='\t')[['topic', 'argument', 'label']]
     test_data = pd.read_csv(os.path.join(data_dir, f"test_{data_source}.tsv"), sep='\t')[['topic', 'argument', 'label']]
@@ -29,7 +29,15 @@ def process_generated_data(generated_data):
         generated.append(arg)
         
     return pd.DataFrame(generated)
-        
+    
+def load_generated_data(data_source: str):
+    generated_data_dir = f'data/generated'
+    generated_train_data = process_generated_data(pd.read_json(os.path.join(generated_data_dir, f"train_{data_source}.json")))
+    generated_dev_data = process_generated_data(pd.read_json(os.path.join(generated_data_dir, f"dev_{data_source}.json")))
+    generated_test_data = process_generated_data(pd.read_json(os.path.join(generated_data_dir, f"test_{data_source}.json")))
+    return generated_train_data, generated_dev_data, generated_test_data
+
+
 def load_augmented_data(data_source: str):
     """
     This function will read the original raw data from data source and will load the generated data with chatpgt and will return the augmented dataset
@@ -42,14 +50,36 @@ def load_augmented_data(data_source: str):
     dev_data['fallacy type'] = 'no fallacy'
     test_data['fallacy type'] = 'no fallacy'
     
-    generated_data_dir = 'data/generated'
-    generated_train_data = process_generated_data(pd.read_json(os.path.join(generated_data_dir, f"train_{data_source}.json")))
-    generated_dev_data = process_generated_data(pd.read_json(os.path.join(generated_data_dir, f"dev_{data_source}.json")))
-    generated_test_data = process_generated_data(pd.read_json(os.path.join(generated_data_dir, f"test_{data_source}.json")))
+    generated_train_data, generated_dev_data, generated_test_data = load_generated_data(data_source) 
     
-    train_data = pd.concat([train_data, generated_train_data]).sample(frac=1)
-    dev_data = pd.concat([dev_data, generated_dev_data]).sample(frac=1)
-    test_data = pd.concat([test_data, generated_test_data]).sample(frac=1)
+    train_data = pd.concat([train_data, generated_train_data]).sample(frac=1).drop_duplicates()
+    dev_data = pd.concat([dev_data, generated_dev_data]).sample(frac=1).drop_duplicates()
+    test_data = pd.concat([test_data, generated_test_data]).sample(frac=1).drop_duplicates()
+    
+    
     return train_data, dev_data, test_data
         
+def load_logic_data():
+    train_df = pd.read_csv('data/LOGIC/train.csv')[['text', 'label']].rename(columns={'text': 'argument', 'label': 'fallacy type'})
+    dev_df = pd.read_csv('data/LOGIC/dev.csv')[['text', 'label']].rename(columns={'text': 'argument', 'label': 'fallacy type'})
+    test_df = pd.read_csv('data/LOGIC/test.csv')[['text', 'label']].rename(columns={'text': 'argument', 'label': 'fallacy type'})
+    return train_df, dev_df, test_df
+
+
+def load_argotario_data(label_encoder=None):
+    argotario = pd.read_csv('data/argumentation/argotario.tsv', sep='\t')[['Text', 'Intended Fallacy']]
+    argotario = argotario.rename(columns={'Text': 'argument', 'Intended Fallacy': 'fallacy type'})
+    argotario = argotario[~argotario['fallacy type'].isna()]
+
+    argotario['fallacy type'] = argotario['fallacy type'].replace({
+        'Red Herring': 'fallacy of relevance', 
+        'Appeal to Emotion': 'appeal to emotion',
+        'No Fallacy': 'no fallacy',
+        'Hasty Generalization': 'faulty generalization',
+        'Irrelevant Authority':'fallacy of credibility',
+        'Ad Hominem': 'ad hominem'
+        })
+    if label_encoder:
+        argotario['fallacy type'] = label_encoder.transform(argotario['fallacy type'])
         
+    return argotario

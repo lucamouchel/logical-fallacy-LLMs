@@ -7,7 +7,7 @@ import ast
 from tqdm import tqdm
 
 model_name = 'google/flan-t5-base'
-model_dir = f"models/{model_name.split('/')[-1]}/without_neutral_CCKG"
+model_dir = f"models/{model_name.split('/')[-1]}/flan_t5_base_model"
 data_dir = 'data/argumentation'
 
 model = T5ForConditionalGeneration.from_pretrained(model_dir)
@@ -32,9 +32,7 @@ def generate_arg(topic, arg_type='supporting'):
     
     return json.dumps(result, ensure_ascii=True)
 
-df_iam = pd.read_csv(os.path.join(data_dir, 'train_iam.tsv'), sep='\t')
-df_cckg = pd.read_csv(os.path.join(data_dir, 'test_cckg.tsv'), sep='\t')
-topics = pd.concat([df_iam['topic'].sample(3), df_cckg['topic'].sample(6)]).sample(frac=1).values
+topics = ['drugs are bad']
 print(topics)
 arg_types=['supporting', 'counter']
 

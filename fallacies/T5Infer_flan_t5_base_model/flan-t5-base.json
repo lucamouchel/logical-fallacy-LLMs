@@ -1,0 +1,92 @@
+{
+    "Private military companies work for profit, and not the good of the country, so the should be banned.": [
+        {
+            "argument_type": "supporting",
+            "argument": "Private military companies work for profit, and not the good of the country so they should be banned from the military."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "Private military companies work for profit, and not the good of the country so they should not be banned.."
+        }
+    ],
+    "Cosmetic surgery for children is safe.": [
+        {
+            "argument_type": "supporting",
+            "argument": "Cosmetic surgery for children is not safe, so it is safe to do. -LRB- if you have a child who is prone to sneezing or coughing /"
+        },
+        {
+            "argument_type": "counter",
+            "argument": "Cosmetic surgery is not safe for children, if they have a phobia of it."
+        }
+    ],
+    "Should we introduce flogging?": [
+        {
+            "argument_type": "supporting",
+            "argument": "Flogging is not a good idea, but it can be done if you want to be flogged."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "Flogging is not a good idea, but it can be done if it is done properly. '"
+        }
+    ],
+    "Television cannot be abandoned as it is a necessity": [
+        {
+            "argument_type": "supporting",
+            "argument": "Television is a very important part of our lives, and we need it to be able to watch it."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "Television is not a necessity, it is an essential part of the life of people and it can not be abandoned."
+        }
+    ],
+    "School prayer should not be in schools.": [
+        {
+            "argument_type": "supporting",
+            "argument": "School prayer is not a good way to pray in schools, but it should be in the classrooms."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "School prayer is not a good way to pray in schools, if you want to be able to do so."
+        }
+    ],
+    "Should we eliminate traditional universities?": [
+        {
+            "argument_type": "supporting",
+            "argument": "Traditional universities are not a good place to study, but they are good for the economy and can be used to make money."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "Traditional universities are not a good place to study, but they are good for people to learn from if they want to be able to do so."
+        }
+    ],
+    "the public defender system can benefit from wealthy people investment and thus should be made mandatory..": [
+        {
+            "argument_type": "supporting",
+            "argument": "The public defender system can benefit from wealthy people investment, so it should be mandatory. -LRB- if it is not a mandatory system!"
+        },
+        {
+            "argument_type": "counter",
+            "argument": "The public defender system is not a good way to protect people, but it can be beneficial for wealthy people to invest."
+        }
+    ],
+    "Surrogacy makes parent happy": [
+        {
+            "argument_type": "supporting",
+            "argument": "Surrogacy is a way for parents to be happy, but it is not the only way to make their child happy"
+        },
+        {
+            "argument_type": "counter",
+            "argument": "Surrogacy is not a good idea for parents, it makes them feel bad if they are not happy."
+        }
+    ],
+    "Should we protect endangered animals?": [
+        {
+            "argument_type": "supporting",
+            "argument": "Should we protect endangered animals? -LRB- if we want to protect them, we should do so."
+        },
+        {
+            "argument_type": "counter",
+            "argument": "We need to protect endangered animals, but we should not be able to do so. -LRB- if we don't protect them!"
+        }
+    ]
+}
