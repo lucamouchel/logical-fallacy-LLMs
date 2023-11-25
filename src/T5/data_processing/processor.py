@@ -5,7 +5,7 @@ from torch.utils.data import TensorDataset
 from transformers import InputExample, T5Tokenizer
 import pandas as pd
 
-from src.data_processing.utils import get_encoded_code_tokens
+from T5.data_processing.utils import get_encoded_code_tokens
 
 
 def load_and_cache_examples(data_file, local_rank, max_seq_length, tokenizer, evaluate=False,
@@ -63,14 +63,3 @@ def load_and_cache_examples(data_file, local_rank, max_seq_length, tokenizer, ev
                             tokenized_targets['input_ids'], tokenized_targets['attention_mask'])
 
     return dataset, labels
-
-        
-
-def write_t5_predictions(predictions, output_nbest_file, qa_ids):
-    """Write final predictions to the json file and log-odds of null if needed."""
-    logging.info("Writing predictions to: %s" % (output_nbest_file))
-    nbest_json = {}
-    for (qa_id, prediction) in zip(qa_ids, predictions):
-            nbest_json[qa_id] = prediction
-    with open(output_nbest_file, "w") as writer:
-        writer.write(json.dumps(nbest_json, indent=2) + "\n")

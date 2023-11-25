@@ -14,9 +14,9 @@ from transformers import AutoModel, AutoTokenizer, GPT2Config
 from transformers import GPTJForCausalLM, AutoTokenizer
 from transformers import GPT2Tokenizer
 
-from src.data_processing.multi_task_batch_scheduler import BatchSchedulerSampler
-from src.data_processing.processor import load_and_cache_examples
-from src.data_processing.utils import get_encoded_code_tokens
+from T5.data_processing.multi_task_batch_scheduler import BatchSchedulerSampler
+from T5.data_processing.processor import load_and_cache_examples
+from T5.data_processing.utils import get_encoded_code_tokens
 
 logger = logging.getLogger(__name__)
 

@@ -9,8 +9,8 @@ import sys
 import evaluate
 
 sys.path.append(".")
-from src.T5Generation import T5LMClassifier
-from src.data_processing.utils import read_labels, get_encoded_code_tokens
+from T5.generation.T5Generation import T5LMClassifier
+from T5.data_processing.utils import read_labels, get_encoded_code_tokens
 
 import wandb
 
