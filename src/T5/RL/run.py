@@ -9,8 +9,9 @@ from tqdm import tqdm
 import torch
 import transformers
 import accelerate
-from T5.RL.T5RLTrainer import Trainer
-FORMAT_BY_TASK = {'cckg': 'mc'}
+from torch.utils.data import IterableDataset, Dataset, DataLoader
+from T5RLTrainer import Trainer
+FORMAT_BY_TASK = {'cckg': 'bool'}
 PART_BY_TASK = {'cckg': 'unseen'}
 
 def ensure_dir(d):

@@ -22,7 +22,7 @@ import wandb
 from sklearn.metrics import precision_recall_curve, average_precision_score, roc_curve, auc
 from sklearn.calibration import calibration_curve 
 
-FORMAT_BY_TASK = {'cckg': 'mc'}
+FORMAT_BY_TASK = {'cckg': 'bool'}
 PART_BY_TASK = {'cckg': 'unseen'}
 accelerator = accelerate.Accelerator()
 device = accelerator.device

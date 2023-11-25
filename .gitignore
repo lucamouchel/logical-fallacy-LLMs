@@ -15,3 +15,4 @@ cache_dir/
 .env
 .ipynb_checkpoints/
 data/
+flan_t5_base_model/

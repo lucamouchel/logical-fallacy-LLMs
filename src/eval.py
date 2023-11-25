@@ -1,6 +1,6 @@
 from sklearn.metrics import classification_report
-import matplotlib.pyplot as plt
-import seaborn as sns
+#import matplotlib.pyplot as plt
+#import seaborn as sns
 import pandas as pd
 import torch
 
@@ -10,14 +10,16 @@ class Eval:
         self.tokenizer = tokenizer
         self.label_encoder = label_encoder
         
-    def eval(self, text):
+    def eval(self, text, classes=None):
         inputs = self.tokenizer(text, return_tensors='pt')
-        inputs.to(device='cuda')
+        inputs.to(device='cpu')
         self.model.eval()
         with torch.no_grad():
             outputs = self.model(**inputs)
         logits = outputs.logits
         probas = torch.nn.functional.softmax(logits, dim=1)
+        if classes:
+            return classes[torch.argmax(probas, dim=1).item()]
         return self.label_encoder.inverse_transform([torch.argmax(probas, dim=1).item()])[0]
      
     def eval_data(self, dataset):

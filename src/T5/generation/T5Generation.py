@@ -10,13 +10,15 @@ from transformers import (
     get_linear_schedule_with_warmup, T5ForConditionalGeneration, T5Tokenizer, T5Config
 )
 
-from transformers import AutoModel, AutoTokenizer, GPT2Config
+from transformers import AutoModel, AutoTokenizer, GPT2Config, AutoModelForSequenceClassification
 from transformers import GPTJForCausalLM, AutoTokenizer
 from transformers import GPT2Tokenizer
+from transformers import T5EncoderModel
 
-from T5.data_processing.multi_task_batch_scheduler import BatchSchedulerSampler
-from T5.data_processing.processor import load_and_cache_examples
-from T5.data_processing.utils import get_encoded_code_tokens
+from src.T5.data_processing.multi_task_batch_scheduler import BatchSchedulerSampler
+from src.T5.data_processing.processor import load_and_cache_examples
+from src.T5.data_processing.utils import get_encoded_code_tokens
+from src.T5.RL.Evaluate import Eval
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +35,7 @@ class T5LMClassifier:
                  fp16=False,
                  fp16_opt_level='01',
                  ):
+        
         self.max_seq_length = max_seq_length
         self.output_model_dir = output_model_dir
 
@@ -46,6 +49,13 @@ class T5LMClassifier:
                             level=logging.INFO)
         self.local_rank = local_rank
         self.fp16 = fp16
+        
+        evaluator_model_name = 'google/t5-v1_1-small'
+        ckpt_path = 'runs/train/model/ckp_25000.pth'
+        self.evaluator = Eval(
+            ckpt_path=ckpt_path, 
+            score_model_name=evaluator_model_name, 
+            classify_model_name='models/electra-base-mnli-M2/' )        
 
         # Setup CUDA, GPU & distributed training
         if local_rank == -1:
@@ -122,17 +132,8 @@ class T5LMClassifier:
             train_dataloader = DataLoader(train_dataset, sampler=train_sampler, batch_size=train_batch_size)
         t_total = len(train_dataloader) // gradient_accumulation_steps * num_train_epochs
 
-        """
-        model = AutoModel.from_pretrained(
-            pretrained_model_name_or_path=self.pretrained_model_name_or_path,
-            from_tf=bool(".ckpt" in self.pretrained_model_name_or_path),
-            config=self.config,
-            cache_dir=self.cache_dir,
-        )
-        """
+       
         model = T5ForConditionalGeneration.from_pretrained(self.pretrained_model_name_or_path)
-        
-        
         model.to(self.device)
 
         # Prepare optimizer and schedule (linear warmup and decay)
@@ -152,13 +153,6 @@ class T5LMClassifier:
         scheduler = get_linear_schedule_with_warmup(
             optimizer, num_warmup_steps=warmup_steps, num_training_steps=t_total
         )
-
-        if self.fp16:
-            try:
-                from apex import amp
-            except ImportError:
-                raise ImportError("Please install apex from https://www.github.com/nvidia/apex to use fp16 training.")
-            model, optimizer = amp.initialize(model, optimizer, opt_level=fp16_opt_level)
 
         # multi-gpu training (should be after apex fp16 initialization)
         if self.n_gpu > 1:
@@ -197,7 +191,7 @@ class T5LMClassifier:
         train_iterator = trange(
             epochs_trained, int(num_train_epochs), desc="Epoch", disable=self.local_rank not in [-1, 0]
         )
-        save_steps = 100#len(train_dataset) // (per_gpu_train_batch_size * gradient_accumulation_steps* self.n_gpu)
+        save_steps = 10#len(train_dataset) // (per_gpu_train_batch_size * gradient_accumulation_steps* self.n_gpu)
         for _ in train_iterator:
             epoch_iterator = tqdm(train_dataloader, desc="Iteration", disable=self.local_rank not in [-1, 0])
             for step, batch in enumerate(epoch_iterator):
@@ -321,7 +315,8 @@ class T5LMClassifier:
                                             attention_mask=batch[1].cuda(),
                                             max_length=max_generated_tokens,
                                             no_repeat_ngram_size=2, 
-)
+)                   
+                    
                 else:
                     outs = model.generate(input_ids=batch[0].cuda(),
                                           attention_mask=batch[1].cuda(),
@@ -329,4 +324,11 @@ class T5LMClassifier:
                 dec = [self.tokenizer.decode(ids, skip_special_tokens=True) for ids in outs]
                 preds.extend(dec)
                 # outputs = model(**inputs)
+                
+        for pred in preds:
+            score = self.evaluator.score(pred)
+            if score < 0.01:
+                pred_class = self.evaluator.classify_as_fallacy(text=pred)
+                print(score, pred_class, pred)
+                
         return preds

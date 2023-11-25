@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 def load_data(data_source: str):
-    data_dir = f'data/argumentation/{data_source}'
+    data_dir = f'../data/argumentation/{data_source}'
     train_data = pd.read_csv(os.path.join(data_dir, f"train_{data_source}.tsv"), sep='\t')[['topic', 'argument', 'label']]
     dev_data = pd.read_csv(os.path.join(data_dir, f"dev_{data_source}.tsv"), sep='\t')[['topic', 'argument', 'label']]
     test_data = pd.read_csv(os.path.join(data_dir, f"test_{data_source}.tsv"), sep='\t')[['topic', 'argument', 'label']]
@@ -31,7 +31,7 @@ def process_generated_data(generated_data):
     return pd.DataFrame(generated)
     
 def load_generated_data(data_source: str):
-    generated_data_dir = f'data/generated'
+    generated_data_dir = f'../data/generated'
     generated_train_data = process_generated_data(pd.read_json(os.path.join(generated_data_dir, f"train_{data_source}.json")))
     generated_dev_data = process_generated_data(pd.read_json(os.path.join(generated_data_dir, f"dev_{data_source}.json")))
     generated_test_data = process_generated_data(pd.read_json(os.path.join(generated_data_dir, f"test_{data_source}.json")))
@@ -60,9 +60,10 @@ def load_augmented_data(data_source: str):
     return train_data, dev_data, test_data
         
 def load_logic_data():
-    train_df = pd.read_csv('data/LOGIC/train.csv')[['text', 'label']].rename(columns={'text': 'argument', 'label': 'fallacy type'})
-    dev_df = pd.read_csv('data/LOGIC/dev.csv')[['text', 'label']].rename(columns={'text': 'argument', 'label': 'fallacy type'})
-    test_df = pd.read_csv('data/LOGIC/test.csv')[['text', 'label']].rename(columns={'text': 'argument', 'label': 'fallacy type'})
+    logic_dir = '../data/LOGIC'
+    train_df = pd.read_csv(os.path.join(logic_dir, 'train.csv'))[['text', 'label']].rename(columns={'text': 'argument', 'label': 'fallacy type'})
+    dev_df = pd.read_csv(os.path.join(logic_dir, 'dev.csv'))[['text', 'label']].rename(columns={'text': 'argument', 'label': 'fallacy type'})
+    test_df = pd.read_csv(os.path.join(logic_dir, 'test.csv'))[['text', 'label']].rename(columns={'text': 'argument', 'label': 'fallacy type'})
     return train_df, dev_df, test_df
 
 
