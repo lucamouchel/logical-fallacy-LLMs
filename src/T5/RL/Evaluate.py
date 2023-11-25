@@ -55,7 +55,7 @@ class Eval:
         inputs.to(device='cpu')
         self.fallacy_classifier.eval()
         with torch.no_grad():
-            outputs = self.fallacy_c(**inputs)
+            outputs = self.fallacy_classifier(**inputs)
         logits = outputs.logits
         probas = torch.nn.functional.softmax(logits, dim=1)
         if classes:
