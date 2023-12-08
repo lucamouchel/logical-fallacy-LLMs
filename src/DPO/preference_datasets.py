@@ -1,7 +1,8 @@
 import datasets
+from datasets import load_dataset
 import torch
 from torch.utils.data import DataLoader, Dataset
-#from utils import get_local_dir, TemporarilySeededRandom
+from utils import get_local_dir, TemporarilySeededRandom
 from torch.nn.utils.rnn import pad_sequence
 from collections import defaultdict
 import tqdm
@@ -49,7 +50,7 @@ def get_se(split, silent=False, cache_dir: str = None) -> Dict[str, Dict[str, Un
        We strip the HTML tags from the responses (except for <code> tags), and we add necessary newlines.
     """
     print(f'Loading SE dataset ({split} split) from Huggingface...')
-    dataset = datasets.load_dataset('HuggingFaceH4/stack-exchange-preferences', cache_dir=cache_dir)['train']
+    dataset = load_dataset('HuggingFaceH4/stack-exchange-preferences', cache_dir=cache_dir)['train']
     print('done')
 
     # shuffle the dataset and select 1% for test
@@ -89,7 +90,7 @@ def get_shp(split: str, silent: bool = False, cache_dir: str = None) -> Dict[str
        For this dataset, the sft_target is the response with the highest score.
     """
     print(f'Loading SHP dataset ({split} split) from Huggingface...')
-    dataset = datasets.load_dataset('stanfordnlp/SHP', split=split, cache_dir=cache_dir)
+    dataset = load_dataset('stanfordnlp/SHP', split=split, cache_dir=cache_dir)
     print('done')
 
     data = defaultdict(lambda: defaultdict(list))
@@ -139,7 +140,8 @@ def get_hh(split: str, silent: bool = False, cache_dir: str = None) -> Dict[str,
        For this dataset, the sft_target is just the chosen response.
     """
     print(f'Loading HH dataset ({split} split) from Huggingface...')
-    dataset = datasets.load_dataset('Anthropic/hh-rlhf', split=split, cache_dir=cache_dir)
+    print(cache_dir, )
+    dataset = load_dataset('Anthropic/hh-rlhf', split=split, cache_dir=cache_dir)
     print('done')
 
     def split_prompt_and_responses(ex):
@@ -148,15 +150,17 @@ def get_hh(split: str, silent: bool = False, cache_dir: str = None) -> Dict[str,
         rejected_response = ex['rejected'][len(prompt):]
         return prompt, chosen_response, rejected_response
 
+    
     data = defaultdict(lambda: defaultdict(list))
-    for row in tqdm.tqdm(dataset, desc='Processing HH', disable=silent):
+    for i, row in tqdm.tqdm(enumerate(dataset), desc='Processing HH', disable=silent):
         prompt, chosen, rejected = split_prompt_and_responses(row)
         responses = [chosen, rejected]
         n_responses = len(data[prompt]['responses'])
         data[prompt]['pairs'].append((n_responses, n_responses + 1))
         data[prompt]['responses'].extend(responses)
         data[prompt]['sft_target'] = chosen
-
+        if i == 2000:
+            break
     return data
 
 def get_cckg(split: str):
@@ -192,7 +196,7 @@ def get_dataset(name: str, split: str, silent: bool = False, cache_dir: str = No
 
     assert set(list(data.values())[0].keys()) == {'responses', 'pairs', 'sft_target'}, \
         f"Unexpected keys in dataset: {list(list(data.values())[0].keys())}"
-
+    
     return data
 
 
@@ -405,4 +409,4 @@ def strings_match_up_to_spaces(str_a: str, str_b: str) -> bool:
     return True
 
 
-print(get_cckg('train'))
+

@@ -197,7 +197,7 @@ class BasicTrainer(object):
         policy_output = pad_to_length(policy_output, self.config.max_length, self.tokenizer.pad_token_id)
         policy_output = all_gather_if_needed(policy_output, self.rank, self.world_size)
         policy_output_decoded = self.tokenizer.batch_decode(policy_output, skip_special_tokens=True)
-
+ 
         if self.config.loss.name in {'dpo', 'ipo'}:
             reference_output = pad_to_length(reference_output, self.config.max_length, self.tokenizer.pad_token_id)
             reference_output = all_gather_if_needed(reference_output, self.rank, self.world_size)
@@ -207,13 +207,47 @@ class BasicTrainer(object):
 
         return policy_output_decoded, reference_output_decoded
     
+    def generate_output(self, prompt):
+        """Generate samples from the policy (and reference model, if doing DPO training) for the given batch of inputs."""
+
+        tokenized_prompt = self.tokenizer(prompt, return_tensors='pt', max_length=200, truncation=True)
+        # FSDP generation according to
+        
+        policy_output = self.policy.generate(
+            tokenized_prompt['input_ids'], attention_mask=tokenized_prompt['attention_mask'], max_length=150, do_sample=True, pad_token_id=self.tokenizer.pad_token_id)
+        
+        policy_output = pad_to_length(policy_output, self.config.max_length, self.tokenizer.pad_token_id)
+        policy_output = all_gather_if_needed(policy_output, self.rank, self.world_size)
+        policy_output_decoded = self.tokenizer.batch_decode(policy_output, skip_special_tokens=True)
+    
+        return policy_output_decoded
+    
     def concatenated_forward(self, model: nn.Module, batch: Dict[str, Union[List, torch.LongTensor]]) -> Tuple[torch.FloatTensor, torch.FloatTensor]:
         """Run the given model on the given batch of inputs, concatenating the chosen and rejected inputs together.
         
-           We do this to avoid doing two forward passes, because it's faster for FSDP.
+        We do this to avoid doing two forward passes, because it's faster for FSDP.
         """
         concatenated_batch = concatenated_inputs(batch)
-        all_logits = model(concatenated_batch['concatenated_input_ids'], attention_mask=concatenated_batch['concatenated_attention_mask']).logits.to(torch.float32)
+        from transformers import T5ForConditionalGeneration
+        if 't5' in self.config.model.name_or_path:
+            # Check if the model is T5ForConditionalGeneration or a subclass
+            if isinstance(model, T5ForConditionalGeneration):
+                all_logits = model(
+                    input_ids=concatenated_batch['concatenated_input_ids'],
+                    attention_mask=concatenated_batch['concatenated_attention_mask'],
+                    labels=concatenated_batch['concatenated_labels']
+                ).logits.to(torch.float32)
+            else:
+                all_logits = model(
+                    input_ids=concatenated_batch['concatenated_input_ids'],
+                    attention_mask=concatenated_batch['concatenated_attention_mask']
+                ).logits.to(torch.float32)
+        else:
+            all_logits = model(
+                input_ids=concatenated_batch['concatenated_input_ids'],
+                attention_mask=concatenated_batch['concatenated_attention_mask']
+            ).logits.to(torch.float32)
+        
         all_logps = _get_batch_logps(all_logits, concatenated_batch['concatenated_labels'], average_log_prob=False)
         chosen_logps = all_logps[:batch['chosen_input_ids'].shape[0]]
         rejected_logps = all_logps[batch['chosen_input_ids'].shape[0]:]
@@ -256,8 +290,13 @@ class BasicTrainer(object):
             metrics[f'logps_{train_test}/rejected'] = policy_rejected_logps.cpu().numpy().tolist()
 
         elif loss_config.name == 'sft':
-            policy_chosen_logits = self.policy(batch['chosen_input_ids'], attention_mask=batch['chosen_attention_mask']).logits.to(torch.float32)
-            policy_chosen_logps = _get_batch_logps(policy_chosen_logits, batch['chosen_labels'], average_log_prob=False)
+            if 't5' in self.config.model.name_or_path:
+                policy_chosen_logits = self.policy(batch['chosen_input_ids'], attention_mask=batch['chosen_attention_mask'], labels=batch['chosen_labels']).logits.to(torch.float32)
+                policy_chosen_logps = _get_batch_logps(policy_chosen_logits, batch['chosen_labels'], average_log_prob=False)
+
+            else:
+                policy_chosen_logits = self.policy(batch['chosen_input_ids'], attention_mask=batch['chosen_attention_mask'],).logits.to(torch.float32)
+                policy_chosen_logps = _get_batch_logps(policy_chosen_logits, batch['chosen_labels'], average_log_prob=False)
 
             losses = -policy_chosen_logps
 
@@ -425,6 +464,7 @@ class BasicTrainer(object):
 
         scheduler_state_dict = self.scheduler.state_dict()
         self.write_state_dict(self.example_counter, scheduler_state_dict, metrics, 'scheduler.pt', output_dir)
+        self.policy.save_pretrained("models/pythia1_dpo")
 
 
 class FSDPTrainer(BasicTrainer):

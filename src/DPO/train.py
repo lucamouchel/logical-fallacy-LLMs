@@ -82,7 +82,7 @@ def main(config: DictConfig):
     policy_dtype = getattr(torch, config.model.policy_dtype)
     if 't5' in config.model.name_or_path:
         policy = transformers.T5ForConditionalGeneration.from_pretrained(
-            config.model.name_or_path, cache_dir=get_local_dir(config.local_dirs), low_cpu_mem_usage=True, torch_dtype=policy_dtype, **model_kwargs))
+            config.model.name_or_path, cache_dir=get_local_dir(config.local_dirs), low_cpu_mem_usage=True, torch_dtype=policy_dtype, **model_kwargs)
     else:
         policy = transformers.AutoModelForCausalLM.from_pretrained(
             config.model.name_or_path, cache_dir=get_local_dir(config.local_dirs), low_cpu_mem_usage=True, torch_dtype=policy_dtype, **model_kwargs)
@@ -95,11 +95,14 @@ def main(config: DictConfig):
             reference_model = transformers.T5ForConditionalGeneration.from_pretrained(
                 config.model.name_or_path, cache_dir=get_local_dir(config.local_dirs), low_cpu_mem_usage=True, torch_dtype=reference_model_dtype, **model_kwargs)
         else:
+            
             reference_model = transformers.AutoModelForCausalLM.from_pretrained(
                 config.model.name_or_path, cache_dir=get_local_dir(config.local_dirs), low_cpu_mem_usage=True, torch_dtype=reference_model_dtype, **model_kwargs)
         disable_dropout(reference_model)
     else:
         reference_model = None
+
+    
 
     if config.model.archive is not None:
         state_dict = torch.load(config.model.archive, map_location='cpu')
