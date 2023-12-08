@@ -23,10 +23,6 @@ def worker_main(rank: int, world_size: int, config: DictConfig, policy: nn.Modul
     if 'FSDP' in config.trainer:
         init_distributed(rank, world_size, port=config.fsdp_port)
     
-    if config.debug:
-        wandb.init = lambda *args, **kwargs: None
-        wandb.log = lambda *args, **kwargs: None
-
     if rank == 0 and config.wandb.enabled:
         os.environ['WANDB_CACHE_DIR'] = get_local_dir(config.local_dirs)
         wandb.init(
@@ -66,16 +62,10 @@ def main(config: DictConfig):
         print('no FSDP port specified; using open port for FSDP:', free_port)
         config.fsdp_port = free_port
 
-    print(OmegaConf.to_yaml(config))
-
     config_path = os.path.join(config.local_run_dir, 'config.yaml')
     with open(config_path, 'w') as f:
         OmegaConf.save(config, f)
 
-    print('=' * 80)
-    print(f'Writing to {socket.gethostname()}:{config.local_run_dir}')
-    print('=' * 80)
- 
     os.environ['XDG_CACHE_HOME'] = get_local_dir(config.local_dirs)
     print('building policy')
     model_kwargs = {'device_map': 'balanced'} if config.trainer == 'BasicTrainer' else {}
@@ -101,8 +91,6 @@ def main(config: DictConfig):
         disable_dropout(reference_model)
     else:
         reference_model = None
-
-    
 
     if config.model.archive is not None:
         state_dict = torch.load(config.model.archive, map_location='cpu')
