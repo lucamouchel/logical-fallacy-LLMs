@@ -2,7 +2,7 @@
 seed: 0
 
 # name for this experiment in the local run directory and on wandb
-exp_name: ???
+exp_name: evaluate
 
 
 dpo_ckpt: null
@@ -50,5 +50,5 @@ minimum_log_interval_secs: 1.0
 
 defaults:
 - _self_
-- model: blank_model_fp32 # basic model configuration
+- model: t5-base # basic model configuration
 - loss: sft # which loss function, either sft or dpo (specify loss.beta if using dpo)
