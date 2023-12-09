@@ -1,9 +1,12 @@
 import torch
+
 torch.backends.cuda.matmul.allow_tf32 = True
+from transformers import T5ForConditionalGeneration
 import torch.nn as nn
 import transformers
 from utils import get_local_dir, get_local_run_dir, disable_dropout
 import os
+import pandas as pd
 import hydra
 import torch.multiprocessing as mp
 from omegaconf import OmegaConf, DictConfig
@@ -12,46 +15,14 @@ from utils import *
 
 OmegaConf.register_new_resolver("get_local_run_dir", lambda exp_name, local_dirs: get_local_run_dir(exp_name, local_dirs, mkdir=False))
 
-latest_dpo_ckpt = '.cache/root/t5_cckg_dpo_2023-12-09_11-53-56_660827/LATEST/policy.pt'
-latest_reference_ckpt = '.cache/root/t5_cckg_sft_2023-12-09_11-40-16_449255/LATEST/policy.pt'
+latest_dpo_ckpt = '.cache/root/t5_cckg_dpo_2023-12-09_14-36-09_394900/LATEST/policy.pt'
+latest_reference_ckpt = '.cache/root/t5_cckg_sft_2023-12-09_14-32-43_811574/LATEST/policy.pt'
+dpo_model = None
+ref_model = None
+tkzer = None
 
-def generate(prompt: str, config: DictConfig, policy: nn.Module, reference_model: Optional[nn.Module] = None, tokenizer: Optional[transformers.PreTrainedTokenizer] = None):
-    """Main function for each worker process (may be only 1 for BasicTrainer/TensorParallelTrainer)."""
-    
-    policy.eval()
-    tokenized_prompt = tokenizer(prompt, return_tensors='pt', max_length=200, truncation=True)
-
-    policy_output = policy.generate(
-        tokenized_prompt['input_ids'],
-        attention_mask=tokenized_prompt['attention_mask'], 
-        min_length=10, 
-        max_length=150,
-        no_repeat_ngram_size=2 , 
-        temperature=0.1, 
-        do_sample=True, 
-        pad_token_id=tokenizer.pad_token_id)
-    
-    policy_output = pad_to_length(policy_output, config.max_length, tokenizer.pad_token_id)
-    policy_output_decoded = tokenizer.decode(policy_output[0], skip_special_tokens=True)
-    if reference_model:
-        reference_model.eval()
-        reference_output = reference_model.generate(
-            tokenized_prompt['input_ids'],
-            attention_mask=tokenized_prompt['attention_mask'], 
-            min_length=10, 
-            max_length=150,
-            no_repeat_ngram_size=2 , 
-            temperature=0.1, 
-            do_sample=True, 
-            pad_token_id=tokenizer.pad_token_id)
-        
-        reference_output = pad_to_length(reference_output, config.max_length, tokenizer.pad_token_id)
-        reference_output_decoded = tokenizer.decode(reference_output[0], skip_special_tokens=True)
-        return (policy_output_decoded, reference_output_decoded)
-    
-    return policy_output_decoded
 @hydra.main(version_base=None, config_path="config", config_name="config_evaluate")
-def main(config: DictConfig):
+def load_models(config: DictConfig):
     """Main entry point for training. Validates config, creates/initializes model(s), and kicks off worker process(es)."""
 
     # Resolve hydra references, e.g. so we don't re-compute the run directory
@@ -99,9 +70,64 @@ def main(config: DictConfig):
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
     
-    prefix_counter = "Generate a counter argument for the topic: "
-    prefix_support = "Generate a supporting argument for the topic: "
-    outs = generate(prompt=prefix_support + "Prostitution should be legal.", config=config, policy=policy, tokenizer=tokenizer)
-    print(outs)
-if __name__ == '__main__':
-    main()
+    global dpo_model
+    global ref_model
+    global tkzer
+    dpo_model=policy
+    ref_model=reference_model
+    tkzer=tokenizer
+
+    return 
+
+load_models()
+
+def generate(prompt: str, model: nn.Module, tokenizer: Optional[transformers.PreTrainedTokenizer] = tkzer):
+    """Main function for each worker process (may be only 1 for BasicTrainer/TensorParallelTrainer)."""
+    model.eval()
+    tokenized_prompt = tokenizer(prompt, return_tensors='pt', max_length=512, truncation=True)
+    output = model.generate(
+        tokenized_prompt['input_ids'],
+        attention_mask=tokenized_prompt['attention_mask'], 
+        min_length=10, 
+        max_length=150,
+        no_repeat_ngram_size=2 , 
+        temperature=0.1, 
+        do_sample=True, 
+        pad_token_id=tokenizer.pad_token_id)
+    output = pad_to_length(output, 256, tokenizer.pad_token_id)
+    output_decoded = tokenizer.decode(output[0], skip_special_tokens=True)
+    return output_decoded
+
+external_model = T5ForConditionalGeneration.from_pretrained('models/flan_t5_base_model', cache_dir='models/flan_t5_base_model')
+# txt = generate("Generate a supporting argument for the topic: Cannabis should be legal.", dpo_model)
+# txt2 = generate("Generate a supporting argument for the topic: Cannabis should be legal.", ref_model)
+# txt3 = generate("Generate a supporting argument for the topic: Cannabis should be legal.", external_model)
+
+def evaluate_over_dataset():
+    import evaluate
+    from tqdm import tqdm
+    metric = evaluate.load('bleu')
+    dataset = pd.read_json('data/argumentation/test_cckg.json')
+    golden = []
+    generated_dpo = []
+    generated_external = [] ## refiner
+    for i, entry in tqdm(dataset[:3].iterrows()):
+        topic = entry.topic
+        golden_arg = entry.argument
+        stance = entry.label
+        prompt = f"Generate a {'supporting' if stance==1 else 'counter'} argument for the topic: {topic}."
+        dpo_generated = generate(prompt, dpo_model)
+        generated_ext = generate(prompt, external_model)
+        
+        golden.append(golden_arg)
+        generated_dpo.append(dpo_generated)
+        generated_external.append(generated_ext)
+        
+    
+    rouge_scores = metric.compute(predictions=generated_dpo, references=golden)
+    rouge_scores_with_external = metric.compute(predictions=generated_external, references=golden,)
+
+    print(rouge_scores) 
+    print("************")
+    print(rouge_scores_with_external)
+evaluate_over_dataset()

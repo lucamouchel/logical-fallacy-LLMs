@@ -51,11 +51,11 @@ class T5LMClassifier:
         self.fp16 = fp16
         
         evaluator_model_name = 'google/t5-v1_1-small'
-        ckpt_path = 'runs/train/model/ckp_25000.pth'
-        self.evaluator = Eval(
-            ckpt_path=ckpt_path, 
-            score_model_name=evaluator_model_name, 
-            classify_model_name='models/electra-base-mnli-M2/' )        
+        # ckpt_path = 'runs/train/model/ckp_25000.pth'
+        # self.evaluator = Eval(
+        #     ckpt_path=ckpt_path, 
+        #     score_model_name=evaluator_model_name, 
+        #     classify_model_name='models/electra-base-mnli-M2/' )        
 
         # Setup CUDA, GPU & distributed training
         if local_rank == -1:
@@ -191,7 +191,7 @@ class T5LMClassifier:
         train_iterator = trange(
             epochs_trained, int(num_train_epochs), desc="Epoch", disable=self.local_rank not in [-1, 0]
         )
-        save_steps = 10#len(train_dataset) // (per_gpu_train_batch_size * gradient_accumulation_steps* self.n_gpu)
+        save_steps = 30#len(train_dataset) // (per_gpu_train_batch_size * gradient_accumulation_steps* self.n_gpu)
         for _ in train_iterator:
             epoch_iterator = tqdm(train_dataloader, desc="Iteration", disable=self.local_rank not in [-1, 0])
             for step, batch in enumerate(epoch_iterator):
@@ -324,11 +324,4 @@ class T5LMClassifier:
                 dec = [self.tokenizer.decode(ids, skip_special_tokens=True) for ids in outs]
                 preds.extend(dec)
                 # outputs = model(**inputs)
-                
-        for pred in preds:
-            score = self.evaluator.score(pred)
-            if score < 0.01:
-                pred_class = self.evaluator.classify_as_fallacy(text=pred)
-                print(score, pred_class, pred)
-                
         return preds
