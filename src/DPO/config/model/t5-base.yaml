@@ -1,4 +1,4 @@
-name_or_path: t5-base
+name_or_path: google/flan-t5-base
 tokenizer_name_or_path: null
 archive: null
 block_name: T5Block

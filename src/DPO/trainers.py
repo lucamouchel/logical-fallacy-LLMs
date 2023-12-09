@@ -386,9 +386,8 @@ class BasicTrainer(object):
         self.example_counter = 0
         self.batch_counter = 0
         last_log = None
-        t = self.generate_output(prompt="Generate a counter argument for the topic: The earth is flat.")
-        print(t)
-        exit()
+        #t = self.generate_output(prompt="Generate a counter argument for the topic: The earth is flat.")
+        
         for batch in self.train_iterator:
             #### BEGIN EVALUATION ####
             if self.example_counter % self.config.eval_every == 0 and (self.example_counter > 0 or self.config.do_first_eval):

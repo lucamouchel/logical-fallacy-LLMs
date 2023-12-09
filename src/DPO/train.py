@@ -70,7 +70,7 @@ def main(config: DictConfig):
     print('building policy')
     model_kwargs = {'device_map': 'balanced'} if config.trainer == 'BasicTrainer' else {}
     policy_dtype = getattr(torch, config.model.policy_dtype)
-    if 't5' in config.model.name_or_path:
+    if 't5' in config.model.name_or_path.lower():
         policy = transformers.T5ForConditionalGeneration.from_pretrained(
             config.model.name_or_path, cache_dir=get_local_dir(config.local_dirs), low_cpu_mem_usage=True, torch_dtype=policy_dtype, **model_kwargs)
     else:
@@ -81,7 +81,7 @@ def main(config: DictConfig):
     if config.loss.name in {'dpo', 'ipo'}:
         print('building reference model')
         reference_model_dtype = getattr(torch, config.model.reference_dtype)
-        if 't5' in config.model.name_or_path:
+        if 't5' in config.model.name_or_path.lower():
             reference_model = transformers.T5ForConditionalGeneration.from_pretrained(
                 config.model.name_or_path, cache_dir=get_local_dir(config.local_dirs), low_cpu_mem_usage=True, torch_dtype=reference_model_dtype, **model_kwargs)
         else:
