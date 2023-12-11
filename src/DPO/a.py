@@ -1,3 +1,0 @@
-import eval
-
-eval.loadModels()
