@@ -17,14 +17,13 @@ from utils import *
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 OmegaConf.register_new_resolver("get_local_run_dir", lambda exp_name, local_dirs: get_local_run_dir(exp_name, local_dirs, mkdir=False))
-latest_reference_ckpt = '.cache/root/t5_cckg_sft_2023-12-09_14-32-43_811574/LATEST/policy.pt' #'.cache/root/pythia1_cckg_sft_2023-12-10_14-55-25_745175/LATEST/policy.pt'
-latest_dpo_ckpt = '.cache/root/t5_cckg_dpo_2023-12-09_14-36-09_394900/LATEST/policy.pt'
-#'.cache/root/pythia1_cckg_DPO_2023-12-10_15-09-50_633664/LATEST/policy.pt'
+latest_reference_ckpt = None#'.cache/root/pythia1_cckg_sft_2023-12-10_14-55-25_745175/LATEST/policy.pt'#'.cache/root/t5_cckg_sft_2023-12-09_14-32-43_811574/LATEST/policy.pt' #
+latest_dpo_ckpt = '.cache/root/t5_cckg_dpo_2023-12-09_14-36-09_394900/LATEST/policy.pt' #'.cache/root/pythia1_cckg_DPO_2023-12-10_15-09-50_633664/LATEST/policy.pt' 
 dpo_model = None
 ref_model = None
 tkzer = None
 external_model = T5ForConditionalGeneration.from_pretrained('models/flan_t5_base_model', cache_dir='models/flan_t5_base_model')
-external_tokenizer=AutoTokenizer.from_pretrained('google/flan-t5-base')
+external_tokenizer = AutoTokenizer.from_pretrained('google/flan-t5-base')
 
 @hydra.main(version_base=None, config_path="config", config_name="config_evaluate")
 def load_models(config: DictConfig):
@@ -86,14 +85,24 @@ def load_models(config: DictConfig):
     return 
 load_models()
 
+############################################################################################################
+############################################################################################################
+############################################################################################################
+############################################################################################################
+############################################################################################################
+############################################################################################################
+############################################################################################################
+############################################################################################################
+############################################################################################################
+############################################################################################################
+
 
 def generate(prompt: str, model: nn.Module, tokenizer: Optional[transformers.PreTrainedTokenizer] = tkzer):
     """Main function for each worker process (may be only 1 for BasicTrainer/TensorParallelTrainer)."""
-    #model.eval()
     tokenized_prompt = tokenizer(prompt, return_tensors='pt', max_length=256, truncation=True)
     output = model.generate(
         **tokenized_prompt,
-        min_length=25, 
+        min_length=25,
         max_length=150,
         no_repeat_ngram_size=2 , 
         temperature=0.1, 
@@ -103,16 +112,21 @@ def generate(prompt: str, model: nn.Module, tokenizer: Optional[transformers.Pre
     output_decoded = tokenizer.decode(output[0], skip_special_tokens=True)
     return output_decoded
 
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+
+def calculate_semantic_similarity(generated_argument, gold_standard_argument):
+    doc1 = nlp(generated_argument)
+    doc2 = nlp(gold_standard_argument)
+    return doc1.similarity(doc2)
+
 def evaluate_over_dataset():
     clf_dir = 'models/howey_electra-base-mnli'
     clf = AutoModelForSequenceClassification.from_pretrained(clf_dir)
     tkzer = AutoTokenizer.from_pretrained(clf_dir.split('/')[-1].replace('_', '/'), )
     
     clf.eval()
-    tokenizer = transformers.AutoTokenizer.from_pretrained('EuletherAI/pythia-1b')
-    if tokenizer.pad_token_id is None:
-        tokenizer.pad_token_id = tokenizer.eos_token_id
-        
     metric = evaluate.load('rouge')
     dataset = pd.read_json('data/argumentation/test_cckg.json')
     golden = []
@@ -120,19 +134,23 @@ def evaluate_over_dataset():
     generated_external = [] ## refiner
     dpo_fallacy_preds = []
     external_fallacy_preds = []
-    i=0
-    j=0
+    JS = []
     for i, entry in tqdm(dataset.iterrows()):
         topic = entry.topic
         golden_arg = entry.argument
         stance = entry.label
         prompt = f"Generate a {'supporting' if stance==1 else 'counter'} argument for the topic: {topic}."
 
-        dpo_generated = generate(prompt, dpo_model, tokenizer=tokenizer) 
+        dpo_generated = generate(prompt, dpo_model) 
+        if prompt in dpo_generated:
+            dpo_generated = dpo_generated[len(prompt):]
+        
         generated_ext = generate(prompt, external_model, tokenizer=external_tokenizer)
         golden.append(golden_arg)
+        
+        print("SCORES:", calculate_semantic_similarity(dpo_generated, golden_arg))
+        print(calculate_semantic_similarity(generated_ext, golden_arg))
         generated_dpo.append(dpo_generated)
-        print(dpo_generated)
         generated_external.append(generated_ext)
         tokenized = tkzer([dpo_generated, generated_ext], return_tensors='pt', padding=True)
         with torch.no_grad():
@@ -141,16 +159,27 @@ def evaluate_over_dataset():
         probas = torch.sigmoid(logits)
         probas_dpo_fallacy = torch.argmax(probas[0])
         probas_external_fallacy = torch.argmax(probas[1])
-        print(probas)
         dpo_fallacy_preds.append(probas_dpo_fallacy)
         external_fallacy_preds.append(probas_external_fallacy)
-        
+        js = {
+            'topic': topic,
+            'prompt': prompt,
+            'golden': golden_arg,
+            'dpo_generated': dpo_generated,
+            'external_generated': generated_ext,
+            'dpo_fallacy': probas_dpo_fallacy.item(),
+            'external_fallacy': probas_external_fallacy.item(),
+        }
+        JS.append(js)
             
     
     rouge_scores = metric.compute(predictions=generated_dpo, references=golden)
     rouge_scores_with_external = metric.compute(predictions=generated_external, references=golden,)
 
-
+    import json
+    with open('results/test_T5-base2.json', 'w') as f:
+        json.dump(JS, f, indent=4)
+        
     print(rouge_scores) 
     print("************")
     print(rouge_scores_with_external)
