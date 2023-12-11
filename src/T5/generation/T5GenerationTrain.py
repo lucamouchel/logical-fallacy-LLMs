@@ -45,15 +45,7 @@ def training(training_file, dev_file,
                      noisy_file=noisy_file,
                      gradient_accumulation_steps=grad_acc)
 
-def tokenize_for_bleu_eval(code):
-    code = re.sub(r'([^A-Za-z0-9_])', r' \1 ', code)
-    code = re.sub(r'([a-z])([A-Z])', r'\1 \2', code)
-    code = re.sub(r'\s+', ' ', code)
-    code = code.replace('"', '`')
-    code = code.replace('\'', '`')
-    tokens = [t for t in code.split(' ') if t]
 
-    return tokens
 
 def evaluate(test_file, trained_models_dir, sequence_length,
              per_gpu_eval_batch_size, language_model):
