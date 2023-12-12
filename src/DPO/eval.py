@@ -72,8 +72,8 @@ def load_models(config: DictConfig):
     
     tokenizer_name_or_path = config.model.tokenizer_name_or_path or config.model.name_or_path
     tokenizer = transformers.AutoTokenizer.from_pretrained(tokenizer_name_or_path, cache_dir=get_local_dir(config.local_dirs), torch_dtype=policy_dtype)
-    if tokenizer.pad_token_id is None:
-        tokenizer.pad_token_id = tokenizer.eos_token_id
+    #if tokenizer.pad_token_id is None:
+     #   tokenizer.pad_token_id = tokenizer.eos_token_id
     
     global dpo_model
     global ref_model
@@ -107,8 +107,9 @@ def generate(prompt: str, model: nn.Module, tokenizer: Optional[transformers.Pre
         no_repeat_ngram_size=2 , 
         temperature=0.1, 
         do_sample=True, 
-        pad_token_id=tokenizer.pad_token_id)
-    output = pad_to_length(output, 256, tokenizer.pad_token_id)
+        pad_token_id=tokenizer.pad_token_id,
+        )
+    #output = pad_to_length(output, 256, tokenizer.pad_token_id)
     output_decoded = tokenizer.decode(output[0], skip_special_tokens=True)
     return output_decoded
 
@@ -148,17 +149,19 @@ def evaluate_over_dataset():
         generated_ext = generate(prompt, external_model, tokenizer=external_tokenizer)
         golden.append(golden_arg)
         
-        print("SCORES:", calculate_semantic_similarity(dpo_generated, golden_arg))
-        print(calculate_semantic_similarity(generated_ext, golden_arg))
+        # print("SCORES:", calculate_semantic_similarity(dpo_generated, golden_arg))
+        # print(calculate_semantic_similarity(generated_ext, golden_arg))
         generated_dpo.append(dpo_generated)
         generated_external.append(generated_ext)
         tokenized = tkzer([dpo_generated, generated_ext], return_tensors='pt', padding=True)
         with torch.no_grad():
             logits = clf(**tokenized).logits
             
-        probas = torch.sigmoid(logits)
+        probas = torch.softmax(logits, dim=1)
         probas_dpo_fallacy = torch.argmax(probas[0])
         probas_external_fallacy = torch.argmax(probas[1])
+        print(dpo_generated)
+        print(generated_ext)
         dpo_fallacy_preds.append(probas_dpo_fallacy)
         external_fallacy_preds.append(probas_external_fallacy)
         js = {
