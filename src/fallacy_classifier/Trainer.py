@@ -236,7 +236,7 @@ class Classifier:
                     
                 logits = outs.logits.to(self.device) 
                 for log in logits:
-                    probs = sigmoid(log)    
+                    probs = torch.softmax(log)    
                     preds.append(torch.argmax(probs).cpu().detach().numpy())
 
         if labels is not None:

@@ -85,7 +85,6 @@ def main(config: DictConfig):
             reference_model = transformers.T5ForConditionalGeneration.from_pretrained(
                 config.model.name_or_path, cache_dir=get_local_dir(config.local_dirs), low_cpu_mem_usage=True, torch_dtype=reference_model_dtype, **model_kwargs)
         else:
-            
             reference_model = transformers.AutoModelForCausalLM.from_pretrained(
                 config.model.name_or_path, cache_dir=get_local_dir(config.local_dirs), low_cpu_mem_usage=True, torch_dtype=reference_model_dtype, **model_kwargs)
         disable_dropout(reference_model)

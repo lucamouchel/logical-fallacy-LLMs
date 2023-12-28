@@ -175,7 +175,7 @@ class BasicTrainer(object):
 
         self.train_iterator = get_batch_iterator(**data_iterator_kwargs, split='train', n_epochs=config.n_epochs, n_examples=config.n_examples, batch_size=config.batch_size, silent=rank != 0, cache_dir=get_local_dir(config.local_dirs))
         rank0_print(f'Loaded train data iterator')
-        self.eval_iterator = get_batch_iterator(**data_iterator_kwargs, split='test', n_examples=config.n_eval_examples, batch_size=config.eval_batch_size, silent=rank != 0, cache_dir=get_local_dir(config.local_dirs))
+        self.eval_iterator = get_batch_iterator(**data_iterator_kwargs, split='dev', n_examples=config.n_eval_examples, batch_size=config.eval_batch_size, silent=rank != 0, cache_dir=get_local_dir(config.local_dirs))
         self.eval_batches = list(self.eval_iterator)
         rank0_print(f'Loaded {len(self.eval_batches)} eval batches of size {config.eval_batch_size}')
 
@@ -208,20 +208,6 @@ class BasicTrainer(object):
         
         return policy_output_decoded, reference_output_decoded
     
-    def generate_output(self, prompt):
-        """Generate samples from the policy (and reference model, if doing DPO training) for the given batch of inputs."""
-
-        tokenized_prompt = self.tokenizer(prompt, return_tensors='pt', max_length=200, truncation=True)
-        # FSDP generation according to
-        print(tokenized_prompt['input_ids'])
-        policy_output = self.policy.generate(
-            tokenized_prompt['input_ids'], attention_mask=tokenized_prompt['attention_mask'], max_length=150, do_sample=True, pad_token_id=self.tokenizer.pad_token_id)
-        
-        policy_output = pad_to_length(policy_output, self.config.max_length, self.tokenizer.pad_token_id)
-        policy_output = all_gather_if_needed(policy_output, self.rank, self.world_size)
-        policy_output_decoded = self.tokenizer.batch_decode(policy_output, skip_special_tokens=True)
-    
-        return policy_output_decoded
     
     def concatenated_forward(self, model: nn.Module, batch: Dict[str, Union[List, torch.LongTensor]]) -> Tuple[torch.FloatTensor, torch.FloatTensor]:
         """Run the given model on the given batch of inputs, concatenating the chosen and rejected inputs together.

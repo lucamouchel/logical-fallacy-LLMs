@@ -109,7 +109,7 @@ def generate(prompt: str, model: nn.Module, tokenizer: Optional[transformers.Pre
         do_sample=True, 
         pad_token_id=tokenizer.pad_token_id,
         )
-    #output = pad_to_length(output, 256, tokenizer.pad_token_id)
+    output = pad_to_length(output, 256, tokenizer.pad_token_id)
     output_decoded = tokenizer.decode(output[0], skip_special_tokens=True)
     return output_decoded
 
@@ -140,13 +140,14 @@ def evaluate_over_dataset():
         topic = entry.topic
         golden_arg = entry.argument
         stance = entry.label
-        prompt = f"Generate a {'supporting' if stance==1 else 'counter'} argument for the topic: {topic}."
+        prompt = f"Generate a {'supporting' if stance==1 else 'counter'} argument for the topic: {topic}"
 
         dpo_generated = generate(prompt, dpo_model) 
         if prompt in dpo_generated:
             dpo_generated = dpo_generated[len(prompt):]
         
-        generated_ext = generate(prompt, external_model, tokenizer=external_tokenizer)
+        
+        generated_ext = generate(prompt, external_model)
         golden.append(golden_arg)
         
         # print("SCORES:", calculate_semantic_similarity(dpo_generated, golden_arg))

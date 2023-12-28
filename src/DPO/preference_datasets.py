@@ -179,6 +179,7 @@ def get_cckg(split: str):
         data[prompt]['pairs'] = row[prompt]['pairs']
         data[prompt]['sft_target'] = sft_target
     
+    print(split, "DONE", len(data))
     return data
 
 def get_dataset(name: str, split: str, silent: bool = False, cache_dir: str = None):
